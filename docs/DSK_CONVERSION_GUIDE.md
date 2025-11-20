@@ -1,6 +1,8 @@
-# Converting Original Eamon Adventures
+# Converting Classic Eamon Adventures
 
-This guide explains how to convert original Apple II Eamon disk images (.DSK files) to JSON format for use with the Linux Eamon engine.
+This guide explains how to convert original Apple II Eamon disk images (.DSK files) to JSON format for use with the Adventure Construction Set.
+
+The Adventure Construction Set includes Eamon compatibility to allow you to play classic adventures from the 1980s-1990s.
 
 ## Quick Start
 
@@ -12,7 +14,8 @@ The converted adventure will be saved to `adventures/your_adventure.json` and ca
 
 ## What the Converter Does
 
-The converter:
+The DSK converter provides backwards compatibility with classic Eamon adventures:
+
 1. **Reads Apple II DOS 3.3 disk images** (.dsk, .do formats)
 2. **Extracts the DOS 3.3 catalog** to find Eamon data files
 3. **Parses Eamon data files**:
@@ -21,7 +24,7 @@ The converter:
    - `EAMON.ARTIFACT` - Items and treasures
    - `EAMON.MONSTER` - NPCs and monsters
    - `EAMON.EFFECT` - Special effects (optional)
-4. **Converts to JSON format** compatible with the Linux engine
+4. **Converts to modern JSON format** compatible with ACS
 5. **Saves the playable adventure** to the adventures directory
 
 ## Usage

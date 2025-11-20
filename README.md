@@ -1,4 +1,4 @@
-# Eamon Adventure Creation System
+# Adventure Construction Set
 
 **Modern text adventure creation and gameplay system**
 
@@ -10,7 +10,7 @@
 
 ## 🎮 What is This?
 
-A modern recreation of the classic **Eamon** text adventure system with:
+A powerful **Adventure Construction Set** for creating and playing text adventures with:
 
 - ✨ **Graphical IDE** - Create adventures without coding
 - 🧠 **Natural Language Parser** - Understands conversational commands (99.2% accuracy)
@@ -229,10 +229,12 @@ See [LICENSE](LICENSE) for full text.
 ### Original Eamon
 - Created by **Donald Brown** (1980)
 - National Eamon User's Club
+- Eamon adventures supported via DSK converter
 
-### Adventure Creation System
+### Adventure Construction Set
 - Developed by **Honey Badger Universe** (2025)
 - Built with Python and Tkinter
+- Universal adventure creation system
 
 ### Special Thanks
 - Eamon community for inspiration

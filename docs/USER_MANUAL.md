@@ -1,4 +1,4 @@
-# Eamon Adventure Creation System - User Manual
+# Adventure Construction Set - User Manual
 
 **Version 2.0**  
 **Copyright © 2025 Honey Badger Universe**  
@@ -23,22 +23,24 @@
 
 ## Introduction
 
-### What is Eamon?
+### What is the Adventure Construction Set?
 
-Eamon (Education in Adventure, Mystery, and Otherness Novelty) is a classic text adventure game system originally created in 1980. This modern Adventure Creation System (ACS) brings the spirit of Eamon into the 21st century with:
+The Adventure Construction Set (ACS) is a powerful, modern system for creating and playing text adventures with:
 
 - **Modern Python Implementation** - Clean, maintainable code
 - **Graphical IDE** - Create adventures without programming
 - **Natural Language Parser** - Understanding conversational commands
 - **Rich Features** - Combat, NPCs, puzzles, environmental effects
 - **Extensible Architecture** - Plugin system for custom features
+- **Eamon Compatibility** - Play classic Eamon adventures via DSK converter
 
 ### Who is This For?
 
-- **Players** - Enjoy classic text adventures with modern enhancements
+- **Players** - Enjoy text adventures with modern enhancements
 - **Creators** - Build your own adventures without coding
 - **Developers** - Extend the system with plugins and custom features
 - **Educators** - Teach creative writing and game design
+- **Eamon Fans** - Experience classic adventures in a modern engine
 
 ---
 

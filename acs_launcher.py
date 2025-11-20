@@ -41,13 +41,18 @@ class AdventureLauncher:
                 continue
 
     def show_banner(self):
-        """Display Eamon banner"""
+        """Display Adventure Construction Set banner"""
         print("\n" + "=" * 70)
         print(
             """
- ███████╗ █████╗ ███╗   ███╗ ██████╗ ███╗   ██╗
- ██╔════╝██╔══██╗████╗ ████║██╔═══██╗████╗  ██║
- █████╗  ███████║██╔████╔██║██║   ██║██╔██╗ ██║
+    ╔═══════════════════════════════════════════════════════════╗
+    ║                                                           ║
+    ║         ADVENTURE CONSTRUCTION SET                        ║
+    ║         Build Your Own Text Adventures                    ║
+    ║                                                           ║
+    ║         Powered by Honey Badger Universe                  ║
+    ║                                                           ║
+    ╚═══════════════════════════════════════════════════════════╝   
  ██╔══╝  ██╔══██║██║╚██╔╝██║██║   ██║██║╚██╗██║
  ███████╗██║  ██║██║ ╚═╝ ██║╚██████╔╝██║ ╚████║
  ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝

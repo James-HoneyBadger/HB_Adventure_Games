@@ -1,4 +1,4 @@
-# Eamon Adventure Creation System - Technical Reference
+# Adventure Construction Set - Technical Reference
 
 **Version 2.0**  
 **Copyright © 2025 Honey Badger Universe**  
@@ -25,7 +25,7 @@
 
 ### System Design
 
-The Adventure Creation System follows a modular, event-driven architecture:
+The Adventure Construction Set (ACS) follows a modular, event-driven architecture:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
