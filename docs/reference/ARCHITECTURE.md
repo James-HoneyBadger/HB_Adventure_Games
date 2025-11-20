@@ -14,7 +14,7 @@ The Adventure Construction Set has been refactored into a **modular, event-drive
 ```
 ┌─────────────────────────────────────────┐
 │           User Interface (UI)           │
-│  IDE, CLI, or custom frontends          │
+│  Graphical IDE                           │
 └──────────────┬──────────────────────────┘
                │
 ┌──────────────┴──────────────────────────┐
@@ -60,9 +60,8 @@ HB_Adventure_Games/
 │
 ├── ui/                      # User interfaces
 │   ├── __init__.py
-│   ├── ide/                # Graphical IDE
-│   ├── cli/                # Command-line interface
-│   └── components/         # Reusable UI components
+│   ├── ide.py              # Graphical IDE
+│   └── accessibility.py    # Accessibility features
 │
 ├── plugins/                 # User-installable plugins
 │   └── custom_plugins/     # Third-party extensions
