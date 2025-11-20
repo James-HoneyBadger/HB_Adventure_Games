@@ -7,7 +7,7 @@ The project has been reorganized into a clean, professional structure following 
 ## Directory Structure
 
 ```
-HB_Eamon/
+HB_Adventure_Games/
 ├── src/acs/              # Main source code (Python package)
 │   ├── __init__.py
 │   ├── core/            # Core game engine
@@ -37,7 +37,7 @@ HB_Eamon/
 │   │
 │   ├── tools/           # Utility tools
 │   │   ├── __init__.py
-│   │   ├── dsk_converter.py    # Eamon DSK file converter
+│   │   # Tool files removed
 │   │   ├── commands.py         # Smart command system
 │   │   └── modding.py          # Modding support
 │   │
@@ -60,7 +60,7 @@ HB_Eamon/
 ├── examples/            # Example adventures
 │
 ├── archive/             # Archived content
-│   ├── Original_Games/         # Original Eamon games
+│   ├── archive/                # Archived files
 │   └── test_adventure.dsk      # Test file
 │
 ├── quickstart.sh        # Quick start menu

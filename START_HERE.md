@@ -1,6 +1,6 @@
-# 🚀 START HERE - Eamon Adventure Creation System
+# 🚀 START HERE - Adventure Construction System
 
-**Welcome!** You've found the Eamon Adventure Creation System v2.0
+**Welcome!** You've found the Adventure Construction System v2.0
 
 Copyright © 2025 Honey Badger Universe | MIT License
 

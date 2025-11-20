@@ -80,7 +80,7 @@ The Eamon system has been expanded with powerful new features while maintaining 
 - `load <slot>` - Load saved game
 
 ### Original Commands Still Work!
-All classic Eamon commands work exactly as before:
+All standard adventure commands work as expected:
 - Movement: n, s, e, w, u, d
 - Actions: look, get, drop, attack
 - Info: inventory, status, help

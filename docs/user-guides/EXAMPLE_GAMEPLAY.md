@@ -33,7 +33,7 @@ Obvious exits: north, south
 > help
 
 ============================================================
-EAMON COMMANDS
+ADVENTURE COMMANDS
 ============================================================
 
 Movement:
@@ -223,4 +223,4 @@ the complete JSON format and guidelines.
 
 ---
 
-Enjoy exploring the Wonderful World of Eamon!
+Enjoy exploring interactive fiction adventures!

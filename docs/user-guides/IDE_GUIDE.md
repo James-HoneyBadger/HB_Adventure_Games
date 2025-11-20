@@ -1,6 +1,6 @@
-# Eamon Adventure IDE - User Guide
+# Adventure IDE - User Guide
 
-A complete graphical IDE for creating and editing Eamon adventures.
+A complete graphical IDE for creating and editing adventures.
 
 ## Quick Start
 
@@ -221,7 +221,7 @@ Fix any errors before final save.
 
 ## Import DSK Files
 
-The IDE can import original Apple II Eamon adventures:
+The IDE supports importing adventure files:
 
 1. **Tools → Import DSK File...**
 2. Select a .dsk disk image

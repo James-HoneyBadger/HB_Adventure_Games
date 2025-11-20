@@ -1,6 +1,6 @@
 # 📋 File Organization Summary
 
-**Eamon Adventure Creation System v2.0**
+**Adventure Construction System v2.0**
 Date: January 2025
 
 ---
@@ -15,7 +15,7 @@ The project has been reorganized with a **consistent, hierarchical structure** t
 
 ### **Root Level**
 ```
-HB_Eamon/
+HB_Adventure_Games/
 ├── adventures/           # Game content (10 complete adventures)
 ├── archive/             # Historical code and old games
 ├── config/              # Configuration files

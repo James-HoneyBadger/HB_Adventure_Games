@@ -1,6 +1,6 @@
 # Playing Adventures in the IDE
 
-The Eamon Adventure IDE now includes an integrated game player! You can create, edit, and play your adventures all in one window.
+The Adventure IDE now includes an integrated game player! You can create, edit, and play your adventures all in one window.
 
 ## How to Use the Play Tab
 
@@ -211,7 +211,7 @@ The goblin attacks back...
 1. Import a DSK file (Tools → Import DSK File)
 2. Switch to Play Adventure tab
 3. Click "▶ Start Game"
-4. Experience classic Eamon adventures!
+4. Experience interactive fiction adventures!
 
 ### Rapid Prototyping
 1. Create a basic room structure
@@ -242,4 +242,4 @@ The goblin attacks back...
 
 **Ready to play?** Open the IDE, switch to the Play Adventure tab, and click "▶ Start Game"!
 
-Enjoy creating and playing your Eamon adventures!
+Enjoy creating and playing your adventures!

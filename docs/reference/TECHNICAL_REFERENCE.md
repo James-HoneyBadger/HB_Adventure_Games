@@ -62,7 +62,7 @@ The Adventure Construction Set (ACS) follows a modular, event-driven architectur
 ### Directory Structure
 
 ```
-HB_Eamon/
+HB_Adventure_Games/
 ├── core/                    # Core engine components
 │   ├── __init__.py
 │   ├── engine.py           # Main game engine

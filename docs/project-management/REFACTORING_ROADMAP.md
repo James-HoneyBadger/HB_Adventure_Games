@@ -437,7 +437,7 @@ tests/
 
 ## Resources
 
-- **Code:** `/home/james/HB_Eamon/`
+- **Code:** `/home/james/HB_Adventure_Games/`
 - **Docs:** `ARCHITECTURE.md`, `PLUGIN_GUIDE.md`
 - **Demo:** `demo_architecture.py`
 - **Original:** `acs_*.py` files (reference)

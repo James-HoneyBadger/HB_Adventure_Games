@@ -39,7 +39,6 @@
 
 - [**Contributing Guide**](developer-guides/CONTRIBUTING.md) - How to contribute to the project
 - [**Plugin Development**](developer-guides/PLUGIN_GUIDE.md) - Create custom extensions
-- [**DSK Conversion Guide**](developer-guides/DSK_CONVERSION_GUIDE.md) - Convert classic Eamon DSK files
 - [**Enhanced Parser Guide**](developer-guides/ENHANCED_PARSER_GUIDE.md) - Natural language parser details
 - [**Enhanced Features Guide**](developer-guides/ENHANCED_FEATURES_GUIDE.md) - Advanced game features
 

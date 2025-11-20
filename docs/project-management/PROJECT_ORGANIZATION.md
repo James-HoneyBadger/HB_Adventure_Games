@@ -9,14 +9,14 @@
 ## New Directory Structure
 
 ```
-HB_Eamon/
+HB_Adventure_Games/
 ├── 📁 bin/                    # Executable scripts
 │   ├── convert_dsk.sh
 │   ├── demo.sh
 │   ├── launch_ide.sh
 │   ├── list_adventures.sh
 │   ├── play_adventure.sh
-│   ├── play_eamon.sh
+│   ├── quickstart.sh
 │   └── verify_installation.sh
 │
 ├── 📁 core/                   # Core game engine
@@ -72,7 +72,7 @@ HB_Eamon/
 ├── 📁 config/                 # Configuration
 │   └── plugins/
 │
-├── 📁 Original_Games/         # Original Eamon games
+├── 📁 archive/                # Archived files
 │
 ├── 📄 scripts/acs-ide             # IDE launcher
 ├── 📄 acs_engine_enhanced.py          # Game engine

@@ -36,7 +36,7 @@ The Adventure Construction Set has been refactored into a **modular, event-drive
 ## Directory Structure
 
 ```
-HB_Eamon/
+HB_Adventure_Games/
 ├── core/                    # Core engine components
 │   ├── __init__.py
 │   ├── base_plugin.py      # Plugin base class and interfaces

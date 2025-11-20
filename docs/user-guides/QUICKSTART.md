@@ -11,7 +11,7 @@ License: MIT
 
 ```bash
 # Requirements: Python 3.6+
-cd HB_Eamon
+cd HB_Adventure_Games
 ./scripts/acs-ide
 ```
 

@@ -1,4 +1,4 @@
-# Contributing to Eamon Adventure Creation System
+# Contributing to Adventure Construction System
 
 **Thank you for your interest in contributing!**
 
@@ -66,8 +66,8 @@ Violations may be reported to: support@honeybadgeruniverse.com
 2. **Fork and Clone**
    ```bash
    # Fork the repository on GitHub
-   git clone https://github.com/YOUR_USERNAME/HB_Eamon.git
-   cd HB_Eamon
+   git clone https://github.com/YOUR_USERNAME/HB_Adventure_Games.git
+   cd HB_Adventure_Games
    ```
 
 3. **Create Branch**
@@ -93,8 +93,8 @@ Violations may be reported to: support@honeybadgeruniverse.com
 
 ```bash
 # Clone repository
-git clone https://github.com/honeybadgeruniverse/HB_Eamon.git
-cd HB_Eamon
+git clone https://github.com/James-HoneyBadger/HB_Adventure_Games.git
+cd HB_Adventure_Games
 
 # Install dependencies (if any)
 pip install -r requirements.txt
@@ -684,4 +684,4 @@ See [LICENSE](../LICENSE) for full text.
 - Join our Discord
 - Email: support@honeybadgeruniverse.com
 
-**Thank you for contributing to Eamon ACS!** 🎮
+**Thank you for contributing to Adventure Construction System!** 🎮

@@ -49,7 +49,7 @@ All documented directories exist and match the actual filesystem:
 ✓ tests                # Test suite
 ✓ config               # Configuration
 ✓ examples             # Example adventures
-✓ archive              # Original Eamon games
+✓ archive              # Archived files
 ```
 
 ### Executable Scripts ✅
@@ -129,7 +129,7 @@ All 10 adventures verified and playable:
 - All NPCs now use valid values: `friendly`, `neutral`, `hostile`
 
 ### 3. Game Engine Compatibility ✅
-- All adventures load successfully in `EamonGame`
+- All adventures load successfully in `AdventureGame`
 - Room navigation works correctly
 - Item and NPC systems functional
 - Quest tracking operational
@@ -167,7 +167,7 @@ Files with intentionally preserved legacy references:
 - `scripts/legacy/verify_installation.sh`
 - `scripts/legacy/launch_ide.sh`
 - `scripts/legacy/demo.sh`
-- `scripts/legacy/play_eamon.sh`
+- `scripts/quickstart.sh`
 
 These scripts are deprecated and users are directed to use the new scripts in `scripts/`.
 

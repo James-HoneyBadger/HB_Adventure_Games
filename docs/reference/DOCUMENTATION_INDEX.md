@@ -1,4 +1,4 @@
-# 📚 Eamon Adventure Creation System - Documentation Index
+# 📚 Adventure Construction System - Documentation Index
 
 **Complete guide to all documentation**
 

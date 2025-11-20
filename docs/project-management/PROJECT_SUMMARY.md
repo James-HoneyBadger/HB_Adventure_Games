@@ -1,26 +1,22 @@
-# Eamon Adventures - Project Summary
+# Adventure Construction System - Project Summary
 
 ## What Was Created
 
-A complete, working Linux-compatible recreation of the classic Eamon adventure game system.
+A complete, working adventure game creation and gameplay system.
 
 ## Project Structure
 
 ```
-HB_Eamon/
-├── eamon_engine.py          # Main game engine (500+ lines)
-├── eamon_launcher.py        # Menu system
-├── play_eamon.sh           # Launcher script
-├── play_adventure.sh       # Direct play script
-├── test_engine.py          # Test suite
-├── README.md               # Full documentation
-├── QUICKSTART.md           # Quick start guide
-├── requirements.txt        # Dependencies (none!)
-└── adventures/
-    ├── beginners_cave.json    # Classic starter adventure
-    └── lair_of_mutants.json   # Intermediate adventure
-
-Total: 12 files, ~2000 lines of code
+HB_Adventure_Games/
+├── acs_engine_enhanced.py   # Enhanced game engine
+├── src/acs/
+│   ├── core/                # Core game systems
+│   ├── ui/                  # User interfaces
+│   ├── systems/             # Game systems
+│   └── plugins/             # Plugin framework
+├── adventures/              # Adventure data files
+├── docs/                    # Documentation
+└── README.md                # Project overview
 ```
 
 ## Features Implemented
@@ -38,8 +34,8 @@ Total: 12 files, ~2000 lines of code
 ✅ Save state (health, inventory, position)
 
 ### Adventures
-✅ The Beginner's Cave - 9 rooms, 8 items, 4 monsters
-✅ The Lair of Mutants - 9 rooms, 9 items, 5 monsters
+✅ Multiple included adventures with varying complexity
+✅ JSON-based adventure format for easy creation
 
 ### Developer Tools
 ✅ JSON-based adventure format
@@ -60,14 +56,13 @@ Total: 12 files, ~2000 lines of code
 
 ### Play Games
 ```bash
-./play_eamon.sh              # Menu system
-./play_adventure.sh beginners_cave.json  # Direct
-python3 test_engine.py       # Test/demo
+./quickstart.sh              # Quick start menu
+python3 -m src.acs.ui.launcher  # Adventure launcher
 ```
 
 ### Create Adventures
-1. Copy an existing JSON adventure
-2. Modify rooms, items, monsters
+1. Use the graphical IDE
+2. Create rooms, items, monsters
 3. Test your adventure
 4. Share with others!
 
@@ -83,7 +78,7 @@ Future developers could add:
 - [ ] Sound effects (terminal bell)
 - [ ] Color support (ANSI codes)
 - [ ] Adventure editor GUI
-- [ ] Import original Eamon DSK files
+- [x] Create new adventures with IDE
 - [ ] Multiplayer/networking
 
 ## Compatibility
@@ -102,12 +97,12 @@ Future developers could add:
 
 ## License & Credits
 
-Fan recreation of the original Eamon system by Donald Brown (1980).
+Open source adventure game creation system.
 Adventures maintain their original authorship.
 Code is free to use, modify, and distribute.
 
 ---
 
-**Project Status:** Complete and functional ✅
+**Project Status:** Active Development ✅
 
-Enjoy the Wonderful World of Eamon on Linux!
+Create your own interactive fiction adventures!

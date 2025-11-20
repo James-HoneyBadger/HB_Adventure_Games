@@ -40,7 +40,7 @@ The Adventure Construction Set (ACS) is a powerful, modern system for creating a
 - **Creators** - Build your own adventures without coding
 - **Developers** - Extend the system with plugins and custom features
 - **Educators** - Teach creative writing and game design
-- **Eamon Fans** - Experience classic adventures in a modern engine
+- **Adventure Fans** - Experience interactive fiction with modern tools
 
 ---
 
@@ -57,7 +57,7 @@ The Adventure Construction Set (ACS) is a powerful, modern system for creating a
 
 ```bash
 # Clone or download the repository
-cd HB_Eamon
+cd HB_Adventure_Games
 
 # Install dependencies (if any)
 pip install -r requirements.txt
@@ -71,7 +71,7 @@ pip install -r requirements.txt
 
 ### Manual Setup
 
-1. **Download** the HB_Eamon directory
+1. **Download** the HB_Adventure_Games directory
 2. **Navigate** to the directory in terminal
 3. **Run** `./scripts/acs-ide`
 
@@ -805,7 +805,7 @@ Add custom features via plugins:
 
 **Contact**:
 - Email: support@honeybadgeruniverse.com
-- Website: honeybadgeruniverse.com/eamon
+- GitHub: github.com/James-HoneyBadger/HB_Adventure_Games
 
 ---
 
@@ -975,7 +975,7 @@ def on_enter_room(room_id):
 - Built with Python and Tkinter
 
 **Special Thanks**:
-- Eamon community for inspiration
+- Interactive fiction community for inspiration
 - Beta testers and contributors
 - Open source community
 

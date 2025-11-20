@@ -1,7 +1,7 @@
-# Eamon Adventures - Enhancement Plan
+# Adventure Construction System - Enhancement Plan
 
 ## Overview
-Expand the game system with modern features while maintaining 100% backward compatibility with original Eamon games and Apple II disk images.
+Expand the game system with modern features for creating rich interactive fiction experiences.
 
 ## Enhanced Features
 
@@ -105,13 +105,11 @@ Expand the game system with modern features while maintaining 100% backward comp
 3. Mod support
 4. Advanced scripting
 
-## Backward Compatibility
+## Feature Development
 
-### Maintaining Compatibility
-- All original Eamon JSON fields remain supported
+### Maintaining Simplicity
+- Core JSON fields remain simple and straightforward
 - New fields are optional with sensible defaults
-- DSK converter creates basic adventures (can be enhanced manually)
-- Original adventures play exactly as before
 - Enhanced features only activate if specified in JSON
 
 ### JSON Structure Extensions
@@ -123,13 +121,13 @@ Expand the game system with modern features while maintaining 100% backward comp
   "intro": "Introduction text",
   "start_room": 1,
   
-  // Original Eamon fields (always supported)
+  // Core fields
   "rooms": [...],
   "items": [...],
   "monsters": [...],
   "effects": [...],
   
-  // NEW: Enhanced features (optional)
+  // Enhanced features (optional)
   "puzzles": [...],
   "quests": [...],
   "dialogues": {...},
@@ -337,21 +335,24 @@ Expand the game system with modern features while maintaining 100% backward comp
 ## File Structure
 
 ```
-HB_Eamon/
-├── eamon_engine.py           # Original engine (maintained)
-├── eamon_engine_enhanced.py  # NEW: Enhanced engine
-├── eamon_compatibility.py    # NEW: Backward compatibility layer
-├── eamon_ide.py              # Current IDE
-├── eamon_ide_enhanced.py     # NEW: Enhanced IDE
-├── dsk_converter.py          # Original converter (maintained)
-├── features/                 # NEW: Feature modules
-│   ├── puzzles.py
-│   ├── dialogue.py
-│   ├── quests.py
-│   ├── combat.py
-│   ├── magic.py
-│   └── crafting.py
-├── examples/                 # NEW: Example enhanced adventures
+HB_Adventure_Games/
+├── acs_engine_enhanced.py    # Enhanced engine
+├── src/acs/
+│   ├── core/
+│   │   ├── engine.py         # Core game engine
+│   │   └── engine_enhanced.py # Enhanced features
+│   ├── ui/
+│   │   ├── ide.py            # Graphical IDE
+│   │   └── launcher.py       # Game launcher
+│   ├── systems/
+│   │   ├── puzzles.py
+│   │   ├── dialogue.py
+│   │   ├── quests.py
+│   │   ├── combat.py
+│   │   ├── magic.py
+│   │   └── crafting.py
+│   └── plugins/              # Plugin system
+├── examples/                 # Example enhanced adventures
 │   ├── enhanced_cave.json
 │   ├── quest_example.json
 │   └── dialogue_example.json
@@ -364,16 +365,16 @@ HB_Eamon/
 
 ## Testing Strategy
 
-### Compatibility Testing
-1. Test all original Eamon adventures still work
-2. Test DSK imports still function correctly
-3. Verify no breaking changes to original features
-4. Ensure original JSON format still loads
+### Core Testing
+1. Test adventure loading and saving
+2. Test feature independence
+3. Verify no breaking changes to core features
+4. Ensure JSON format validation
 
 ### Enhancement Testing
 1. Test new features independently
 2. Test feature combinations
-3. Test enhanced + original content mixing
+3. Test enhanced content
 4. Performance testing with large adventures
 
 ## Implementation Priority
@@ -403,10 +404,8 @@ HB_Eamon/
 
 ## Success Criteria
 
-✅ All original Eamon adventures work unchanged
-✅ DSK converter continues to function
 ✅ New adventures can use enhanced features
-✅ Enhanced and original content can mix seamlessly
+✅ Enhanced content works seamlessly
 ✅ Clear documentation for all new features
 ✅ Easy for creators to add enhancements gradually
 ✅ Performance remains good (< 1 sec response time)
