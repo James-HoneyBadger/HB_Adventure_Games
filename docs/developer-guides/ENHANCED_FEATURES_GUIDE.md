@@ -1,8 +1,8 @@
-# Enhanced Eamon System - Quick Start Guide
+# Enhanced Adventure System - Quick Start Guide
 
 ## Overview
 
-The Eamon system has been expanded with powerful new features while maintaining 100% backward compatibility with original Eamon adventures and Apple II disk images.
+The Adventure Construction System includes powerful features for creating rich interactive fiction experiences.
 
 ## What's New?
 
@@ -87,7 +87,7 @@ All standard adventure commands work as expected:
 
 ## Creating Enhanced Adventures
 
-### Basic Structure (Original Eamon)
+### Basic Structure
 
 ```json
 {
@@ -299,7 +299,7 @@ See `adventures/wizards_tower_enhanced.json` for a complete example featuring:
 ## Tips for Adventure Creators
 
 ### Start Simple
-- Begin with original Eamon format
+- Begin with standard adventure format
 - Add one enhanced feature at a time
 - Test thoroughly before adding more
 - Keep backup copies
@@ -439,4 +439,4 @@ Coming soon:
 
 **Ready to enhance?** Start with the example adventure, then create your own enhanced content!
 
-**Remember:** All original Eamon features still work perfectly. Enhanced features are completely optional!
+**Remember:** All standard adventure features still work perfectly. Enhanced features are completely optional!

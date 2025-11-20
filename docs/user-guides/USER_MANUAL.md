@@ -32,7 +32,7 @@ The Adventure Construction Set (ACS) is a powerful, modern system for creating a
 - **Natural Language Parser** - Understanding conversational commands
 - **Rich Features** - Combat, NPCs, puzzles, environmental effects
 - **Extensible Architecture** - Plugin system for custom features
-- **Eamon Compatibility** - Play classic Eamon adventures via DSK converter
+- **Cross-Platform** - Works on Windows, macOS, and Linux
 
 ### Who is This For?
 
@@ -964,10 +964,6 @@ def on_enter_room(room_id):
 - **IDE** - Integrated Development Environment
 
 ### Appendix D: Credits
-
-**Original Eamon**:
-- Created by Donald Brown (1980)
-- National Eamon User's Club
 
 **Adventure Creation System**:
 - Developed by Honey Badger Universe (2025)

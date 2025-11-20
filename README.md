@@ -234,12 +234,7 @@ See [LICENSE](LICENSE) for full text.
 
 ## 🙏 Credits
 
-### Original Eamon
-- Created by **Donald Brown** (1980)
-- National Eamon User's Club
-- Eamon adventures supported via DSK converter
-
-### Adventure Construction Set
+### Adventure Construction System
 - Developed by **Honey Badger Universe** (2025)
 - Built with Python and Tkinter
 - Universal adventure creation system

@@ -51,8 +51,6 @@
 - [**Modular Architecture**](reference/MODULAR_ARCHITECTURE.md) - Module design patterns
 - [**Documentation Index**](reference/DOCUMENTATION_INDEX.md) - Complete file index
 - [**Documentation Review**](reference/DOCUMENTATION_REVIEW.md) - Documentation verification report
-- [**Quick Reference Card**](reference/QUICK_REFERENCE.txt) - Command cheat sheet
-- [**DSK Converter Quick Ref**](reference/DSK_CONVERTER_QUICKREF.txt) - DSK conversion commands
 
 ### 🗂️ Project Management
 **Planning and organization documents**
@@ -85,10 +83,6 @@
 1. Read: [IDE Guide](user-guides/IDE_GUIDE.md)
 2. Run: `./scripts/acs-ide`
 3. Follow: [User Manual](user-guides/USER_MANUAL.md)
-
-#### Convert a classic Eamon DSK file
-1. Read: [DSK Conversion Guide](developer-guides/DSK_CONVERSION_GUIDE.md)
-2. Run: `./scripts/acs-convert <file.dsk>`
 
 #### Develop a plugin
 1. Read: [Plugin Guide](developer-guides/PLUGIN_GUIDE.md)
