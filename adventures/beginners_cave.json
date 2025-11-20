@@ -1,0 +1,234 @@
+{
+  "title": "The Beginner's Cave",
+  "author": "Donald Brown",
+  "intro": "You are standing at the entrance to a mysterious cave. Rumors speak of\ntreasure and danger within. As a novice adventurer, this seems like the\nperfect place to test your skills.\n\nYour quest: explore the cave, defeat any monsters, and return with treasure!",
+  "start_room": 1,
+  "rooms": [
+    {
+      "id": 1,
+      "name": "Cave Entrance",
+      "description": "You stand at the mouth of a dark cave. Cool air flows from within.\nThe entrance is partially concealed by vines and moss. A narrow passage\nleads deeper into the darkness to the north.",
+      "exits": {
+        "north": 2,
+        "south": 99
+      }
+    },
+    {
+      "id": 2,
+      "name": "Dark Corridor",
+      "description": "A narrow, winding corridor stretches before you. The walls are damp\nand covered with strange fungus that glows faintly, providing just enough\nlight to see. You hear the drip of water echoing from somewhere ahead.",
+      "exits": {
+        "north": 3,
+        "south": 1,
+        "east": 4
+      }
+    },
+    {
+      "id": 3,
+      "name": "Underground Stream",
+      "description": "A small underground stream cuts across the cave floor here. The water\nis clear and cold. A wooden bridge crosses to the north, though it looks\nrather rickety. To the west, you see a faint glow.",
+      "exits": {
+        "south": 2,
+        "north": 5,
+        "west": 6
+      }
+    },
+    {
+      "id": 4,
+      "name": "Storage Chamber",
+      "description": "This appears to be an old storage room. Broken crates and barrels are\nscattered about. In the corner, you notice something glinting in the dim light.",
+      "exits": {
+        "west": 2
+      }
+    },
+    {
+      "id": 5,
+      "name": "Large Cavern",
+      "description": "You enter a vast cavern with a high ceiling. Stalactites hang overhead\nlike stone icicles. The air is cooler here, and you can hear movement\nsomewhere in the shadows.",
+      "exits": {
+        "south": 3,
+        "east": 7,
+        "north": 8
+      }
+    },
+    {
+      "id": 6,
+      "name": "Crystal Grotto",
+      "description": "This chamber is filled with beautiful crystals that emit a soft blue glow.\nThe walls sparkle with thousands of tiny reflections. It's quite peaceful here.",
+      "exits": {
+        "east": 3
+      }
+    },
+    {
+      "id": 7,
+      "name": "Goblin's Den",
+      "description": "This small cave reeks of something foul. Bones and debris are scattered\nabout. This appears to be someone's lair.",
+      "exits": {
+        "west": 5
+      }
+    },
+    {
+      "id": 8,
+      "name": "Treasure Chamber",
+      "description": "You've found it! A small chamber with an old wooden chest sitting against\nthe far wall. This must be where the treasure is kept. But it won't be\nunguarded...",
+      "exits": {
+        "south": 5
+      }
+    },
+    {
+      "id": 99,
+      "name": "Outside the Cave",
+      "description": "You emerge from the cave into the fresh air and sunlight. Your adventure\nis complete! You can return to town now.",
+      "exits": {
+        "north": 1
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "name": "rusty sword",
+      "description": "An old iron sword, somewhat rusty but still serviceable.",
+      "type": "weapon",
+      "weight": 5,
+      "value": 25,
+      "is_weapon": true,
+      "weapon_type": 5,
+      "weapon_dice": 1,
+      "weapon_sides": 8,
+      "is_takeable": true,
+      "location": 4
+    },
+    {
+      "id": 2,
+      "name": "leather armor",
+      "description": "Simple leather armor that provides basic protection.",
+      "type": "armor",
+      "weight": 8,
+      "value": 40,
+      "is_armor": true,
+      "armor_value": 2,
+      "is_takeable": true,
+      "location": 2
+    },
+    {
+      "id": 3,
+      "name": "gold coins",
+      "description": "A small pouch containing 50 gold pieces.",
+      "type": "treasure",
+      "weight": 1,
+      "value": 50,
+      "is_takeable": true,
+      "location": 6
+    },
+    {
+      "id": 4,
+      "name": "healing potion",
+      "description": "A small vial containing a red liquid that smells of herbs.",
+      "type": "drinkable",
+      "weight": 1,
+      "value": 30,
+      "is_takeable": true,
+      "location": 4
+    },
+    {
+      "id": 5,
+      "name": "treasure chest",
+      "description": "A heavy wooden chest bound with iron. It's locked, but the lock looks old.",
+      "type": "container",
+      "weight": 50,
+      "value": 200,
+      "is_takeable": false,
+      "location": 8
+    },
+    {
+      "id": 6,
+      "name": "jeweled crown",
+      "description": "A beautiful crown studded with gems. Quite valuable!",
+      "type": "treasure",
+      "weight": 2,
+      "value": 500,
+      "is_takeable": true,
+      "location": 8
+    },
+    {
+      "id": 7,
+      "name": "old map",
+      "description": "A yellowed parchment with cryptic markings and symbols.",
+      "type": "readable",
+      "weight": 0,
+      "value": 10,
+      "is_takeable": true,
+      "location": 2
+    },
+    {
+      "id": 8,
+      "name": "club",
+      "description": "A crude wooden club, heavy and serviceable.",
+      "type": "weapon",
+      "weight": 4,
+      "value": 10,
+      "is_weapon": true,
+      "weapon_type": 3,
+      "weapon_dice": 1,
+      "weapon_sides": 6,
+      "is_takeable": true,
+      "location": 7
+    }
+  ],
+  "monsters": [
+    {
+      "id": 1,
+      "name": "giant rat",
+      "description": "A large rat with glowing red eyes and sharp teeth.",
+      "room_id": 2,
+      "hardiness": 6,
+      "agility": 12,
+      "friendliness": "hostile",
+      "courage": 100,
+      "weapon_id": null,
+      "armor_worn": 0,
+      "gold": 5
+    },
+    {
+      "id": 2,
+      "name": "goblin",
+      "description": "A nasty little goblin with green skin and pointed ears.",
+      "room_id": 7,
+      "hardiness": 12,
+      "agility": 10,
+      "friendliness": "hostile",
+      "courage": 80,
+      "weapon_id": 8,
+      "armor_worn": 0,
+      "gold": 15
+    },
+    {
+      "id": 3,
+      "name": "cave troll",
+      "description": "A massive troll with gray skin and a menacing growl.",
+      "room_id": 8,
+      "hardiness": 20,
+      "agility": 6,
+      "friendliness": "hostile",
+      "courage": 100,
+      "weapon_id": null,
+      "armor_worn": 1,
+      "gold": 30
+    },
+    {
+      "id": 4,
+      "name": "friendly bat",
+      "description": "A small bat that seems curious rather than threatening.",
+      "room_id": 5,
+      "hardiness": 3,
+      "agility": 16,
+      "friendliness": "friendly",
+      "courage": 20,
+      "weapon_id": null,
+      "armor_worn": 0,
+      "gold": 0
+    }
+  ],
+  "effects": []
+}

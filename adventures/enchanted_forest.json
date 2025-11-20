@@ -1,0 +1,536 @@
+{
+  "title": "The Enchanted Forest",
+  "author": "Enhanced Eamon Team",
+  "intro": "Deep in the Whispering Woods lies a forest touched by ancient magic. The fae folk dwell here, along with creatures both wondrous and terrible. A desperate king has asked you to venture into this realm to retrieve the Crystal of Seasons - a magical artifact stolen by a rogue wizard.\n\nBut in the Enchanted Forest, not all is as it seems...\n\nThis adventure showcases: NPC Dialogue Trees, Multiple Quests, Magic System, and Moral Choices.",
+  "start_room": 1,
+  
+  "settings": {
+    "allow_save": true,
+    "enable_puzzles": true,
+    "enable_magic": true,
+    "difficulty": "medium",
+    "enable_moral_choices": true
+  },
+  
+  "rooms": [
+    {
+      "id": 1,
+      "name": "Forest Edge",
+      "description": "The boundary between the mundane world and the Enchanted Forest. Ancient trees tower before you, their branches forming a natural archway. The air shimmers with magic.",
+      "exits": {"north": 2},
+      "light_level": "bright",
+      "is_safe_zone": true
+    },
+    {
+      "id": 2,
+      "name": "Moonlit Glade",
+      "description": "A peaceful clearing bathed in eternal moonlight, even in daytime. Flowers of impossible colors bloom here. A fairy ring of mushrooms grows in the center.",
+      "exits": {"south": 1, "east": 3, "west": 4, "north": 5},
+      "light_level": "bright",
+      "is_safe_zone": true
+    },
+    {
+      "id": 3,
+      "name": "Pixie Hollow",
+      "description": "Tiny lights dance through the air - pixies! Their laughter sounds like tinkling bells. They seem curious about you.",
+      "exits": {"west": 2},
+      "light_level": "bright",
+      "hidden_items": [5]
+    },
+    {
+      "id": 4,
+      "name": "Dark Thicket",
+      "description": "The trees grow close together here, blocking out most light. Strange sounds echo from the shadows. Thorny vines bar the way north.",
+      "exits": {"east": 2, "north": 6},
+      "light_level": "dim",
+      "has_trap": false
+    },
+    {
+      "id": 5,
+      "name": "Unicorn Grove",
+      "description": "A sacred grove where unicorns come to drink from a crystal-clear pool. The water has healing properties. The unicorn guardian watches you carefully.",
+      "exits": {"south": 2, "north": 7},
+      "light_level": "bright",
+      "is_safe_zone": true
+    },
+    {
+      "id": 6,
+      "name": "Witch's Cottage",
+      "description": "A crooked cottage with a thatched roof and smoking chimney. Herbs hang drying from the eaves. The door is painted with protective runes.",
+      "exits": {"south": 4, "in": 8},
+      "light_level": "normal"
+    },
+    {
+      "id": 7,
+      "name": "Ancient Oak",
+      "description": "A massive oak tree, thousands of years old. Its trunk is hollow, forming a natural chamber. Runes glow faintly on the bark. Stairs spiral up inside the trunk.",
+      "exits": {"south": 5, "up": 9},
+      "light_level": "dim"
+    },
+    {
+      "id": 8,
+      "name": "Inside the Cottage",
+      "description": "The cottage interior is surprisingly spacious. Shelves line the walls, filled with bottles, books, and mysterious ingredients. A cauldron bubbles over the fireplace.",
+      "exits": {"out": 6},
+      "light_level": "normal",
+      "is_safe_zone": true
+    },
+    {
+      "id": 9,
+      "name": "Wizard's Laboratory",
+      "description": "A chamber carved into the ancient oak. Magical equipment and bubbling potions fill every surface. The Crystal of Seasons sits on a pedestal, pulsing with power. The wizard stands before it.",
+      "exits": {"down": 7},
+      "light_level": "bright"
+    }
+  ],
+  
+  "items": [
+    {
+      "id": 1,
+      "name": "wooden staff",
+      "description": "A gnarled oak staff that hums with natural magic. Helpful for spellcasting.",
+      "type": "weapon",
+      "weight": 4,
+      "value": 100,
+      "is_weapon": true,
+      "weapon_damage": 6,
+      "location": 0,
+      "can_be_equipped": true,
+      "equipment_slot": "weapon",
+      "magical_bonus": 3,
+      "special_abilities": ["enhance_magic"],
+      "durability": 100
+    },
+    {
+      "id": 2,
+      "name": "forest berries",
+      "description": "Sweet berries that grow only in the Enchanted Forest. They restore a small amount of health.",
+      "type": "edible",
+      "weight": 1,
+      "value": 10,
+      "is_weapon": false,
+      "location": 2,
+      "on_use_effect": "heal_10",
+      "consumable": true
+    },
+    {
+      "id": 3,
+      "name": "fairy dust",
+      "description": "Glittering dust given by the pixies. Has magical properties.",
+      "type": "normal",
+      "weight": 0,
+      "value": 50,
+      "is_weapon": false,
+      "location": -3,
+      "special_abilities": ["flight", "invisibility"],
+      "on_use_effect": "grant_flight"
+    },
+    {
+      "id": 4,
+      "name": "healing herbs",
+      "description": "A bundle of medicinal herbs gathered from the forest. The witch might want these.",
+      "type": "normal",
+      "weight": 1,
+      "value": 25,
+      "is_weapon": false,
+      "location": 5,
+      "is_quest_item": true,
+      "quest_id": 2
+    },
+    {
+      "id": 5,
+      "name": "pixie bell",
+      "description": "A tiny silver bell that chimes with magical tones. Hidden by the pixies.",
+      "type": "treasure",
+      "weight": 0,
+      "value": 75,
+      "is_weapon": false,
+      "location": -3,
+      "special_abilities": ["summon_help"],
+      "can_be_equipped": true,
+      "equipment_slot": "accessory"
+    },
+    {
+      "id": 6,
+      "name": "Crystal of Seasons",
+      "description": "A magnificent crystal that shifts colors - spring green, summer gold, autumn red, winter blue. It radiates powerful magic. This is what the king sent you to find!",
+      "type": "treasure",
+      "weight": 3,
+      "value": 10000,
+      "is_weapon": false,
+      "location": 9,
+      "is_quest_item": true,
+      "quest_id": 1,
+      "magical_bonus": 10,
+      "special_abilities": ["control_weather", "eternal_spring"]
+    },
+    {
+      "id": 7,
+      "name": "unicorn horn",
+      "description": "A horn shed by the unicorn guardian. It has powerful healing properties.",
+      "type": "treasure",
+      "weight": 2,
+      "value": 500,
+      "is_weapon": false,
+      "location": -5,
+      "special_abilities": ["cure_all", "purify"],
+      "is_quest_item": true,
+      "quest_id": 3
+    },
+    {
+      "id": 8,
+      "name": "enchanted cloak",
+      "description": "A shimmering cloak woven from moonbeams and spider silk. Provides magical protection.",
+      "type": "armor",
+      "weight": 2,
+      "value": 300,
+      "is_weapon": false,
+      "location": -8,
+      "can_be_equipped": true,
+      "equipment_slot": "armor",
+      "armor_value": 5,
+      "magical_bonus": 4,
+      "special_abilities": ["magic_resistance"],
+      "durability": 150
+    },
+    {
+      "id": 9,
+      "name": "spellbook",
+      "description": "An ancient tome containing powerful spells. Reading it grants knowledge of magic.",
+      "type": "readable",
+      "weight": 3,
+      "value": 200,
+      "is_weapon": false,
+      "location": 9,
+      "special_abilities": ["learn_spells"],
+      "on_use_effect": "grant_spells"
+    },
+    {
+      "id": 10,
+      "name": "potion of clarity",
+      "description": "A clear potion brewed by the witch. Enhances mental abilities.",
+      "type": "drinkable",
+      "weight": 1,
+      "value": 40,
+      "is_weapon": false,
+      "location": -8,
+      "on_use_effect": "enhance_intelligence",
+      "consumable": true
+    }
+  ],
+  
+  "monsters": [
+    {
+      "id": 1,
+      "name": "Brightleaf the Pixie Queen",
+      "description": "A tiny winged creature with an aura of rainbow light. She flutters in the air, regarding you with curious eyes.",
+      "hardiness": 5,
+      "agility": 20,
+      "friendliness": "friendly",
+      "courage": 50,
+      "location": 3,
+      "weapon_id": 0,
+      "dialogue_id": 1,
+      "can_trade": true,
+      "gives_quests": [2],
+      "reaction_level": 30,
+      "special_abilities": ["flight", "invisibility", "magic"],
+      "ai_behavior": "helpful"
+    },
+    {
+      "id": 2,
+      "name": "Silverhorn the Unicorn",
+      "description": "A majestic white unicorn with a spiral horn that gleams like starlight. She emanates an aura of purity and grace.",
+      "hardiness": 30,
+      "agility": 18,
+      "friendliness": "friendly",
+      "courage": 80,
+      "location": 5,
+      "weapon_id": 0,
+      "dialogue_id": 2,
+      "can_trade": false,
+      "gives_quests": [3],
+      "reaction_level": 50,
+      "special_abilities": ["healing_aura", "purify"],
+      "ai_behavior": "protective"
+    },
+    {
+      "id": 3,
+      "name": "Morgana the Witch",
+      "description": "An old woman with knowing eyes and a kind smile. She wears robes adorned with mystical symbols.",
+      "hardiness": 15,
+      "agility": 10,
+      "friendliness": "neutral",
+      "courage": 70,
+      "location": 8,
+      "weapon_id": 0,
+      "dialogue_id": 3,
+      "can_trade": true,
+      "gives_quests": [],
+      "reaction_level": 0,
+      "special_abilities": ["powerful_magic", "alchemy"],
+      "ai_behavior": "wise"
+    },
+    {
+      "id": 4,
+      "name": "Thornvine Guardian",
+      "description": "A creature made of living thorny vines. It blocks the path to the witch's cottage.",
+      "hardiness": 25,
+      "agility": 8,
+      "friendliness": "hostile",
+      "courage": 100,
+      "location": 4,
+      "weapon_id": 0,
+      "reaction_level": -30,
+      "special_abilities": ["plant_nature", "regeneration"],
+      "ai_behavior": "guardian",
+      "experience_value": 50
+    },
+    {
+      "id": 5,
+      "name": "Aldric the Rogue Wizard",
+      "description": "A middle-aged man in elaborate robes, clutching a staff crackling with power. His eyes are wild with ambition. He guards the Crystal of Seasons.",
+      "hardiness": 40,
+      "agility": 15,
+      "friendliness": "hostile",
+      "courage": 60,
+      "location": 9,
+      "weapon_id": 0,
+      "dialogue_id": 4,
+      "can_trade": false,
+      "reaction_level": -50,
+      "special_abilities": ["powerful_magic", "teleport", "magic_shield"],
+      "ai_behavior": "intelligent",
+      "experience_value": 200
+    }
+  ],
+  
+  "puzzles": [
+    {
+      "id": 1,
+      "type": "riddle",
+      "room_id": 7,
+      "description": "Runes on the ancient oak glow and form words: 'I speak without a mouth and hear without ears. I have no body, but come alive with wind. What am I?'",
+      "exit_direction": "up",
+      "solution": "echo",
+      "success_message": "The runes glow brightly! The entrance to the wizard's laboratory opens above.",
+      "failure_message": "The runes dim. That's not the answer.",
+      "max_attempts": 3,
+      "attempts_used": 0,
+      "solved": false
+    }
+  ],
+  
+  "dialogues": [
+    {
+      "npc_id": 1,
+      "greeting": "Hello, big person! You're not from the forest, are you? We don't get many visitors!",
+      "topics": [
+        {
+          "keyword": "quest",
+          "response": "Oh! We pixies love games and riddles! If you help us find our lost bell, we'll give you some of our magical dust! It's very useful!",
+          "unlocks_quest": 2,
+          "changes_reaction": 10
+        },
+        {
+          "keyword": "crystal",
+          "response": "The shiny color-changing thing? The wizard took it up into the big tree. He's not very nice. Be careful!",
+          "changes_reaction": 5
+        },
+        {
+          "keyword": "wizard",
+          "response": "He came here moons ago and climbed the ancient oak. Now he won't leave! The tree is sad about it.",
+          "changes_reaction": 5
+        },
+        {
+          "keyword": "dust",
+          "response": "Fairy dust is special! It can make you fly, or turn invisible, or all sorts of fun things! But we only give it to friends.",
+          "changes_reaction": 5
+        }
+      ],
+      "farewell": "Bye bye! Come play with us again!"
+    },
+    {
+      "npc_id": 2,
+      "greeting": "Greetings, traveler. I sense goodness in your heart. What brings you to this sacred grove?",
+      "topics": [
+        {
+          "keyword": "quest",
+          "response": "The forest is sick. Dark magic spreads from the ancient oak. If you can retrieve a sample of the wizard's corrupted magic, I may be able to purify it and heal the land.",
+          "unlocks_quest": 3,
+          "changes_reaction": 15
+        },
+        {
+          "keyword": "crystal",
+          "response": "The Crystal of Seasons maintains balance in nature. In wrong hands, it brings chaos. You must retrieve it.",
+          "changes_reaction": 10
+        },
+        {
+          "keyword": "healing",
+          "response": "My horn has healing properties. I shed it naturally each year. Take this piece - it may help you in your quest.",
+          "changes_reaction": 10
+        },
+        {
+          "keyword": "wizard",
+          "response": "His greed corrupts the forest's magic. He must be stopped, but remember - even the misguided deserve mercy if they can be redeemed.",
+          "changes_reaction": 5
+        }
+      ],
+      "farewell": "May the forest's blessing go with you."
+    },
+    {
+      "npc_id": 3,
+      "greeting": "Welcome to my humble cottage. I am Morgana. What brings you to the Enchanted Forest?",
+      "topics": [
+        {
+          "keyword": "trade",
+          "response": "I deal in potions and magical items. If you have ingredients or coin, we can trade.",
+          "changes_reaction": 5
+        },
+        {
+          "keyword": "crystal",
+          "response": "Ah yes, the Crystal of Seasons. Aldric the wizard stole it. Foolish man - he doesn't understand its power.",
+          "changes_reaction": 5
+        },
+        {
+          "keyword": "wizard",
+          "response": "Aldric was once a good man, a student of magic. But ambition corrupted him. If you face him, remember that words may succeed where swords fail.",
+          "changes_reaction": 10
+        },
+        {
+          "keyword": "potion",
+          "response": "I can brew you a potion of clarity if you bring me fresh healing herbs from the unicorn's grove. It will sharpen your mind.",
+          "changes_reaction": 5
+        }
+      ],
+      "farewell": "Be safe, and remember - magic always has a price."
+    },
+    {
+      "npc_id": 5,
+      "greeting": "You! How did you get in here? No matter - you're too late! The Crystal is mine!",
+      "topics": [
+        {
+          "keyword": "crystal",
+          "response": "This crystal will make me the most powerful wizard in the realm! Kings and queens will bow before me!",
+          "changes_reaction": -10
+        },
+        {
+          "keyword": "king",
+          "response": "Your king? Bah! What is a king compared to the power of the seasons themselves? I will reshape the world!",
+          "changes_reaction": -10
+        },
+        {
+          "keyword": "surrender",
+          "response": "Surrender? To you? NEVER! I will destroy you first! ...Wait. You truly believe I could be redeemed? After all I've done?",
+          "changes_reaction": 30
+        },
+        {
+          "keyword": "power",
+          "response": "For years I was overlooked, dismissed as mediocre. But with this crystal, I'll show them all! ...Unless... is this truly what I want?",
+          "changes_reaction": 20
+        },
+        {
+          "keyword": "redemption",
+          "response": "I... I've been so consumed by ambition. The forest IS dying because of me, isn't it? Perhaps... perhaps I should return the crystal. Help me become better.",
+          "changes_reaction": 50,
+          "unlocks_quest": 4
+        }
+      ],
+      "farewell": "This isn't over!"
+    }
+  ],
+  
+  "quests": [
+    {
+      "id": 1,
+      "title": "Retrieve the Crystal of Seasons",
+      "description": "The king has tasked you with retrieving the Crystal of Seasons from the rogue wizard Aldric. The fate of the kingdom depends on it.",
+      "giver_npc": 0,
+      "objectives": [
+        {
+          "type": "collect_item",
+          "target_id": 6,
+          "quantity": 1,
+          "description": "Retrieve the Crystal of Seasons",
+          "completed": false
+        }
+      ],
+      "rewards_gold": 500,
+      "rewards_experience": 300,
+      "rewards_items": [],
+      "status": "active",
+      "required_for_completion": true
+    },
+    {
+      "id": 2,
+      "title": "The Lost Pixie Bell",
+      "description": "The pixies have lost their magical bell somewhere in the forest. Find it and return it to them for a reward.",
+      "giver_npc": 1,
+      "objectives": [
+        {
+          "type": "collect_item",
+          "target_id": 5,
+          "quantity": 1,
+          "description": "Find the lost pixie bell",
+          "completed": false
+        },
+        {
+          "type": "return_to_npc",
+          "target_id": 1,
+          "description": "Return the bell to Brightleaf",
+          "completed": false
+        }
+      ],
+      "rewards_gold": 0,
+      "rewards_experience": 50,
+      "rewards_items": [3],
+      "status": "not_started",
+      "required_for_completion": false
+    },
+    {
+      "id": 3,
+      "title": "Heal the Forest",
+      "description": "The unicorn Silverhorn asks you to help heal the forest by stopping the source of corruption - the wizard's dark magic.",
+      "giver_npc": 2,
+      "objectives": [
+        {
+          "type": "defeat_npc",
+          "target_id": 5,
+          "description": "Stop the wizard Aldric",
+          "completed": false
+        },
+        {
+          "type": "return_to_npc",
+          "target_id": 2,
+          "description": "Return to Silverhorn",
+          "completed": false
+        }
+      ],
+      "rewards_gold": 0,
+      "rewards_experience": 100,
+      "rewards_items": [7],
+      "status": "not_started",
+      "required_for_completion": false
+    },
+    {
+      "id": 4,
+      "title": "Redeem the Wizard",
+      "description": "Instead of defeating Aldric, you've convinced him to seek redemption. Help him return to the path of good.",
+      "giver_npc": 5,
+      "objectives": [
+        {
+          "type": "escort_npc",
+          "target_id": 5,
+          "description": "Escort Aldric to the unicorn for purification",
+          "completed": false
+        }
+      ],
+      "rewards_gold": 200,
+      "rewards_experience": 400,
+      "rewards_items": [9],
+      "status": "not_started",
+      "required_for_completion": false,
+      "mutually_exclusive_with": [3]
+    }
+  ]
+}

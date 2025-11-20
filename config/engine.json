@@ -1,0 +1,17 @@
+{
+  "engine": {
+    "name": "Adventure Construction Set",
+    "version": "2.0",
+    "enable_event_history": false
+  },
+  "gameplay": {
+    "auto_save": true,
+    "save_interval": 5,
+    "difficulty": "normal"
+  },
+  "ui": {
+    "theme": "dark",
+    "font_size": 12,
+    "color_enabled": true
+  }
+}

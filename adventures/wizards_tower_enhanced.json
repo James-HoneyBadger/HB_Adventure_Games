@@ -1,0 +1,285 @@
+{
+  "title": "The Wizard's Tower",
+  "author": "Enhanced Eamon System",
+  "intro": "You stand before a mysterious tower that appeared overnight. The wizard who lives here has challenged adventurers to prove their worth. Those who succeed will be rewarded with magical artifacts and knowledge. But beware - the tower is filled with puzzles, riddles, and magical guardians.\n\nYour quest: Reach the top of the tower and claim your reward!",
+  "start_room": 1,
+  
+  "settings": {
+    "allow_save": true,
+    "difficulty": "normal",
+    "enable_magic": true,
+    "enable_puzzles": true
+  },
+  
+  "rooms": [
+    {
+      "id": 1,
+      "name": "Tower Entrance",
+      "description": "You stand in a grand entrance hall. Magical torches light the walls with an ethereal glow. A spiral staircase leads upward, and a heavy wooden door blocks the way north.",
+      "exits": {
+        "up": 2,
+        "north": 3
+      },
+      "light_level": "bright",
+      "is_safe_zone": true,
+      "ambient_sound": "A faint humming of magical energy fills the air."
+    },
+    {
+      "id": 2,
+      "name": "First Floor Library",
+      "description": "Countless books line the walls from floor to ceiling. Dust motes dance in shafts of light from narrow windows. A wise-looking wizard sits reading at a desk.",
+      "exits": {
+        "down": 1,
+        "up": 4
+      },
+      "light_level": "normal"
+    },
+    {
+      "id": 3,
+      "name": "Storage Room",
+      "description": "A cramped storage room filled with old crates and barrels. Something glints in the corner.",
+      "exits": {
+        "south": 1
+      },
+      "light_level": "dim",
+      "hidden_items": [5],
+      "items_revealed": false
+    },
+    {
+      "id": 4,
+      "name": "Second Floor Puzzle Room",
+      "description": "A circular room with strange symbols carved into the floor. A pedestal in the center holds an ancient tome. The stairs continue upward, but a shimmering magical barrier blocks your way.",
+      "exits": {
+        "down": 2,
+        "up": 5
+      },
+      "light_level": "normal",
+      "alternate_description": "The magical barrier has vanished! The symbols on the floor glow softly. The way up is clear.",
+      "condition_for_alternate": "puzzle_1_solved"
+    },
+    {
+      "id": 5,
+      "name": "Tower Summit",
+      "description": "You've reached the top of the tower! The room is filled with floating magical artifacts and glowing crystals. A grand treasure chest sits on a pedestal, emanating power.",
+      "exits": {
+        "down": 4
+      },
+      "light_level": "bright",
+      "is_safe_zone": true
+    }
+  ],
+  
+  "items": [
+    {
+      "id": 1,
+      "name": "iron key",
+      "description": "A heavy iron key with intricate runes etched along its length.",
+      "type": "normal",
+      "weight": 1,
+      "value": 10,
+      "is_takeable": true,
+      "location": 2,
+      "is_key": true,
+      "unlocks_puzzle": 1
+    },
+    {
+      "id": 2,
+      "name": "magic sword",
+      "description": "A beautifully crafted sword that glows with inner light. It feels almost weightless in your hands.",
+      "type": "weapon",
+      "weight": 5,
+      "value": 500,
+      "is_weapon": true,
+      "weapon_type": 5,
+      "weapon_dice": 2,
+      "weapon_sides": 8,
+      "is_takeable": true,
+      "location": 5,
+      "can_be_equipped": true,
+      "equipment_slot": "weapon",
+      "magical_bonus": 3,
+      "special_abilities": ["light_source", "extra_damage_vs_undead"],
+      "required_level": 0,
+      "durability": 100,
+      "max_durability": 100
+    },
+    {
+      "id": 3,
+      "name": "leather backpack",
+      "description": "A sturdy leather backpack with many pockets. It could hold quite a bit.",
+      "type": "container",
+      "weight": 2,
+      "value": 20,
+      "is_takeable": true,
+      "location": 1,
+      "is_container": true,
+      "container_capacity": 50,
+      "contains_items": []
+    },
+    {
+      "id": 4,
+      "name": "ancient tome",
+      "description": "A heavy leather-bound book filled with arcane symbols. Reading it might teach you something...",
+      "type": "readable",
+      "weight": 3,
+      "value": 100,
+      "is_takeable": true,
+      "location": 4,
+      "on_use_effect": "learn_spell_fireball",
+      "is_quest_item": true,
+      "quest_id": 1
+    },
+    {
+      "id": 5,
+      "name": "healing potion",
+      "description": "A small vial filled with shimmering red liquid. It smells of cherries and mint.",
+      "type": "drinkable",
+      "weight": 1,
+      "value": 50,
+      "is_takeable": true,
+      "location": 3,
+      "on_use_effect": "heal_20",
+      "special_abilities": ["consumable", "healing"]
+    },
+    {
+      "id": 6,
+      "name": "golden amulet",
+      "description": "An ornate golden amulet set with a glowing blue gemstone. Wearing it makes you feel more confident.",
+      "type": "normal",
+      "weight": 1,
+      "value": 200,
+      "is_takeable": true,
+      "location": 0,
+      "can_be_equipped": true,
+      "equipment_slot": "amulet",
+      "magical_bonus": 1,
+      "special_abilities": ["charisma_boost"],
+      "is_quest_item": true,
+      "quest_id": 1
+    }
+  ],
+  
+  "monsters": [
+    {
+      "id": 1,
+      "name": "Master Eldrin",
+      "description": "An elderly wizard with a long white beard and twinkling eyes. He seems friendly and knowledgeable.",
+      "room_id": 2,
+      "hardiness": 50,
+      "agility": 15,
+      "friendliness": "friendly",
+      "courage": 100,
+      "gold": 0,
+      "dialogue_id": 1,
+      "can_trade": false,
+      "gives_quests": [1],
+      "special_abilities": ["teleport", "magical_shield"],
+      "ai_behavior": "stationary",
+      "reaction_level": 20
+    },
+    {
+      "id": 2,
+      "name": "magical guardian",
+      "description": "A shimmering construct made of pure magical energy. It stands between you and the stairs.",
+      "room_id": 4,
+      "hardiness": 30,
+      "agility": 18,
+      "friendliness": "neutral",
+      "courage": 200,
+      "gold": 0,
+      "special_abilities": ["magical_attack", "damage_resistance"],
+      "ai_behavior": "defensive",
+      "drops_items_on_death": [7]
+    }
+  ],
+  
+  "puzzles": [
+    {
+      "id": 1,
+      "type": "locked_door",
+      "room_id": 1,
+      "description": "A heavy wooden door with an iron lock. You'll need a key to open it.",
+      "exit_direction": "north",
+      "required_item": 1,
+      "success_message": "The key turns smoothly in the lock. The door swings open with a creak.",
+      "failure_message": "You don't have the right key for this door.",
+      "is_solved": false
+    },
+    {
+      "id": 2,
+      "type": "riddle",
+      "room_id": 4,
+      "description": "Solve my riddle to pass: I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?",
+      "riddle_question": "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?",
+      "riddle_answer": "echo",
+      "success_message": "Correct! The magical barrier dissolves into sparkling motes of light.",
+      "failure_message": "The barrier crackles, rejecting your answer. Try again.",
+      "is_solved": false,
+      "attempts_allowed": 3
+    }
+  ],
+  
+  "dialogues": [
+    {
+      "npc_id": 1,
+      "greeting": "Greetings, young adventurer! Welcome to my tower. I am Master Eldrin, keeper of this place.",
+      "topics": [
+        {
+          "keyword": "quest",
+          "response": "Ah, you seek a challenge? Very well! If you can reach the summit of my tower and retrieve the ancient tome, I will grant you a powerful artifact. But beware - the tower is protected by magic and guardians. Are you brave enough?",
+          "unlocks_quest": 1,
+          "changes_reaction": 10
+        },
+        {
+          "keyword": "tower",
+          "response": "This tower has stood for a thousand years, housing the accumulated knowledge of generations of wizards. Each floor presents its own challenges. The iron key in this very room might help you on your journey.",
+          "changes_reaction": 5
+        },
+        {
+          "keyword": "magic",
+          "response": "Magic is the art of bending reality to one's will. With study and practice, even you could learn to wield it. The tome on the second floor contains a powerful spell, if you can reach it.",
+          "changes_reaction": 5
+        },
+        {
+          "keyword": "help",
+          "response": "I can offer you wisdom, but the challenges ahead you must face yourself. Search thoroughly, think carefully, and remember that not all battles must be fought. Sometimes wit serves better than steel.",
+          "changes_reaction": 0
+        }
+      ],
+      "farewell": "May wisdom guide your path, young one. Return to me when you have completed your quest."
+    }
+  ],
+  
+  "quests": [
+    {
+      "id": 1,
+      "title": "The Tower Challenge",
+      "description": "Master Eldrin has challenged you to reach the summit of his tower and retrieve the ancient tome. In return, he will grant you a powerful magical artifact.",
+      "giver_npc": 1,
+      "objectives": [
+        {
+          "type": "collect_item",
+          "target_id": 4,
+          "target_name": "ancient tome",
+          "quantity": 1,
+          "current_progress": 0,
+          "description": "Find and retrieve the ancient tome from the puzzle room"
+        },
+        {
+          "type": "reach_room",
+          "target_id": 5,
+          "target_name": "Tower Summit",
+          "quantity": 1,
+          "current_progress": 0,
+          "description": "Reach the summit of the tower"
+        }
+      ],
+      "rewards_gold": 100,
+      "rewards_experience": 250,
+      "rewards_items": [6],
+      "status": "not_started"
+    }
+  ],
+  
+  "effects": []
+}

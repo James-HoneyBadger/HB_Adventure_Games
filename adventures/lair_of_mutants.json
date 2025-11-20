@@ -1,0 +1,257 @@
+{
+  "title": "The Lair of Mutants",
+  "author": "Jim Jacobson",
+  "intro": "You have heard tales of horrible mutant creatures living in an abandoned\nlaboratory beneath the city. The entrance has been sealed for years, but\nrecently strange sounds have been heard coming from below.\n\nThe Guild Master has hired you to investigate and eliminate the threat.\nYou descend the rusty ladder into the darkness...",
+  "start_room": 1,
+  "rooms": [
+    {
+      "id": 1,
+      "name": "Abandoned Entrance",
+      "description": "You're in a dusty entrance hall. Broken furniture and debris litter\nthe floor. Strange chemical smells waft through the air. A rusty door\nleads north, and you can still climb up the ladder to the south to escape.",
+      "exits": {
+        "north": 2,
+        "south": 99
+      }
+    },
+    {
+      "id": 2,
+      "name": "Main Corridor",
+      "description": "A long corridor stretches before you. Flickering lights overhead\ncast eerie shadows. Doors line both sides - east and west. The corridor\ncontinues north.",
+      "exits": {
+        "north": 3,
+        "south": 1,
+        "east": 5,
+        "west": 4
+      }
+    },
+    {
+      "id": 3,
+      "name": "Central Laboratory",
+      "description": "This appears to be the main laboratory. Broken glass and overturned\nequipment are everywhere. Strange stains cover the floor. Passages lead\neast and west.",
+      "exits": {
+        "south": 2,
+        "east": 6,
+        "west": 7
+      }
+    },
+    {
+      "id": 4,
+      "name": "Supply Closet",
+      "description": "A small storage room filled with shelves. Most supplies have long since\nrotted or been looted, but you might find something useful here.",
+      "exits": {
+        "east": 2
+      }
+    },
+    {
+      "id": 5,
+      "name": "Observation Room",
+      "description": "This room has a large window looking into the lab. The glass is cracked\nbut intact. Control panels line one wall, all dark and dead.",
+      "exits": {
+        "west": 2
+      }
+    },
+    {
+      "id": 6,
+      "name": "Specimen Chamber",
+      "description": "Large tanks line the walls, most broken and empty. Something moves in\nthe shadows. This room gives you a very bad feeling.",
+      "exits": {
+        "west": 3,
+        "north": 8
+      }
+    },
+    {
+      "id": 7,
+      "name": "Chemical Storage",
+      "description": "Shelves of chemicals, many leaking or broken. The fumes make your eyes\nwater. You shouldn't stay here long.",
+      "exits": {
+        "east": 3
+      }
+    },
+    {
+      "id": 8,
+      "name": "Director's Office",
+      "description": "A lavish office, now in ruins. A large desk sits in the center, covered\nin dust and papers. Behind it is a heavy safe.",
+      "exits": {
+        "south": 6
+      }
+    },
+    {
+      "id": 99,
+      "name": "Surface",
+      "description": "You climb back up to the surface, breathing in the fresh air. Your\nmission is complete - for better or worse.",
+      "exits": {
+        "north": 1
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "name": "steel pipe",
+      "description": "A heavy steel pipe, makes a decent improvised weapon.",
+      "type": "weapon",
+      "weight": 6,
+      "value": 15,
+      "is_weapon": true,
+      "weapon_type": 3,
+      "weapon_dice": 1,
+      "weapon_sides": 7,
+      "is_takeable": true,
+      "location": 1
+    },
+    {
+      "id": 2,
+      "name": "lab coat",
+      "description": "A thick lab coat that might provide some protection.",
+      "type": "armor",
+      "weight": 3,
+      "value": 20,
+      "is_armor": true,
+      "armor_value": 1,
+      "is_takeable": true,
+      "location": 4
+    },
+    {
+      "id": 3,
+      "name": "antidote",
+      "description": "A vial labeled 'Universal Antidote' - might come in handy.",
+      "type": "drinkable",
+      "weight": 1,
+      "value": 50,
+      "is_takeable": true,
+      "location": 7
+    },
+    {
+      "id": 4,
+      "name": "research notes",
+      "description": "Scattered papers describing horrific experiments.",
+      "type": "readable",
+      "weight": 1,
+      "value": 25,
+      "is_takeable": true,
+      "location": 3
+    },
+    {
+      "id": 5,
+      "name": "silver key",
+      "description": "A small silver key, looks important.",
+      "type": "normal",
+      "weight": 0,
+      "value": 10,
+      "is_takeable": true,
+      "location": 5
+    },
+    {
+      "id": 6,
+      "name": "experimental serum",
+      "description": "A glowing green liquid in a sealed container. Value unknown.",
+      "type": "treasure",
+      "weight": 2,
+      "value": 300,
+      "is_takeable": true,
+      "location": 6
+    },
+    {
+      "id": 7,
+      "name": "safe",
+      "description": "A heavy steel safe. It's locked.",
+      "type": "container",
+      "weight": 100,
+      "value": 0,
+      "is_takeable": false,
+      "location": 8
+    },
+    {
+      "id": 8,
+      "name": "gold bars",
+      "description": "Three small gold bars - payment for the dark experiments.",
+      "type": "treasure",
+      "weight": 5,
+      "value": 750,
+      "is_takeable": true,
+      "location": 8
+    },
+    {
+      "id": 9,
+      "name": "machete",
+      "description": "A sharp machete, perfect for close combat.",
+      "type": "weapon",
+      "weight": 4,
+      "value": 35,
+      "is_weapon": true,
+      "weapon_type": 5,
+      "weapon_dice": 2,
+      "weapon_sides": 6,
+      "is_takeable": true,
+      "location": 4
+    }
+  ],
+  "monsters": [
+    {
+      "id": 1,
+      "name": "mutant rat",
+      "description": "A rat the size of a dog, with patchy fur and glowing eyes.",
+      "room_id": 2,
+      "hardiness": 8,
+      "agility": 14,
+      "friendliness": "hostile",
+      "courage": 100,
+      "weapon_id": null,
+      "armor_worn": 0,
+      "gold": 0
+    },
+    {
+      "id": 2,
+      "name": "failed experiment",
+      "description": "A shambling humanoid creature, barely recognizable as human.",
+      "room_id": 3,
+      "hardiness": 15,
+      "agility": 8,
+      "friendliness": "hostile",
+      "courage": 100,
+      "weapon_id": null,
+      "armor_worn": 0,
+      "gold": 10
+    },
+    {
+      "id": 3,
+      "name": "security robot",
+      "description": "An old security robot, still functional and aggressive.",
+      "room_id": 5,
+      "hardiness": 12,
+      "agility": 10,
+      "friendliness": "hostile",
+      "courage": 100,
+      "weapon_id": null,
+      "armor_worn": 2,
+      "gold": 5
+    },
+    {
+      "id": 4,
+      "name": "mutant horror",
+      "description": "A massive creature of twisted flesh and bone. The pinnacle of the\nexperiments, and clearly hostile.",
+      "room_id": 6,
+      "hardiness": 25,
+      "agility": 12,
+      "friendliness": "hostile",
+      "courage": 100,
+      "weapon_id": null,
+      "armor_worn": 1,
+      "gold": 50
+    },
+    {
+      "id": 5,
+      "name": "lab assistant ghost",
+      "description": "The ethereal form of a former lab assistant, trapped here.",
+      "room_id": 8,
+      "hardiness": 10,
+      "agility": 15,
+      "friendliness": "neutral",
+      "courage": 50,
+      "weapon_id": null,
+      "armor_worn": 0,
+      "gold": 0
+    }
+  ],
+  "effects": []
+}

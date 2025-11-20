@@ -1,0 +1,335 @@
+{
+  "title": "Mystery Mansion",
+  "author": "Enhanced Eamon Team",
+  "intro": "You stand before a dark Victorian mansion. Lightning flashes across the stormy sky. The letter in your pocket speaks of a fortune hidden within... if you can solve the mysteries of the house.\n\nThis adventure showcases: Puzzles, Hidden Objects, Container Items, and Quest System.",
+  "start_room": 1,
+  
+  "settings": {
+    "allow_save": true,
+    "enable_puzzles": true,
+    "enable_magic": false,
+    "difficulty": "medium"
+  },
+  
+  "rooms": [
+    {
+      "id": 1,
+      "name": "Grand Entrance Hall",
+      "description": "A dusty entrance hall with a grand staircase leading up. A portrait of Lord Blackwood stares down at you. To the east is a library, west is a dining room.",
+      "exits": {"north": 2, "east": 3, "west": 4, "up": 5},
+      "light_level": "dim",
+      "has_trap": false
+    },
+    {
+      "id": 2,
+      "name": "Parlor",
+      "description": "An elegant parlor with covered furniture. A grand piano sits in the corner, gathering dust.",
+      "exits": {"south": 1},
+      "light_level": "dim",
+      "hidden_items": [10]
+    },
+    {
+      "id": 3,
+      "name": "Library",
+      "description": "Floor-to-ceiling bookshelves line the walls. A large oak desk sits in the center. The air smells of old paper and leather.",
+      "exits": {"west": 1},
+      "light_level": "normal",
+      "has_trap": false
+    },
+    {
+      "id": 4,
+      "name": "Dining Room",
+      "description": "A long table set for a dinner party that never happened. Cobwebs drape the chandelier.",
+      "exits": {"east": 1},
+      "light_level": "dim",
+      "hidden_items": [11]
+    },
+    {
+      "id": 5,
+      "name": "Master Bedroom",
+      "description": "A luxurious bedroom with a four-poster bed. A large wardrobe stands against one wall. The locked door to the vault is north.",
+      "exits": {"down": 1, "north": 6},
+      "light_level": "dim",
+      "requires_light_source": false
+    },
+    {
+      "id": 6,
+      "name": "Secret Vault",
+      "description": "You've found it! A small vault room with a pedestal in the center. This is where Lord Blackwood hid his greatest treasure!",
+      "exits": {"south": 5},
+      "light_level": "dark",
+      "requires_light_source": true,
+      "is_safe_zone": true
+    }
+  ],
+  
+  "items": [
+    {
+      "id": 1,
+      "name": "ornate lantern",
+      "description": "A brass lantern that still has oil. It provides a warm glow.",
+      "type": "treasure",
+      "weight": 3,
+      "value": 25,
+      "is_weapon": false,
+      "location": 1,
+      "special_abilities": ["light_source"],
+      "on_use_effect": "provides_light"
+    },
+    {
+      "id": 2,
+      "name": "leather satchel",
+      "description": "A worn leather bag perfect for carrying items.",
+      "type": "container",
+      "weight": 2,
+      "value": 15,
+      "is_weapon": false,
+      "location": 3,
+      "is_container": true,
+      "container_capacity": 50,
+      "contains_items": [3, 4]
+    },
+    {
+      "id": 3,
+      "name": "old journal",
+      "description": "Lord Blackwood's journal. The last entry reads: 'The numbers dance in moonlight: 7-3-9. Only those who understand the mansion's secrets shall find my fortune.'",
+      "type": "readable",
+      "weight": 1,
+      "value": 10,
+      "is_weapon": false,
+      "location": -2,
+      "is_quest_item": true,
+      "quest_id": 1
+    },
+    {
+      "id": 4,
+      "name": "rusty key",
+      "description": "An old iron key with intricate engravings.",
+      "type": "treasure",
+      "weight": 1,
+      "value": 5,
+      "is_weapon": false,
+      "is_key": true,
+      "location": -2
+    },
+    {
+      "id": 5,
+      "name": "silver candlestick",
+      "description": "An ornate silver candlestick, tarnished with age but still valuable.",
+      "type": "treasure",
+      "weight": 4,
+      "value": 75,
+      "is_weapon": false,
+      "location": 4
+    },
+    {
+      "id": 6,
+      "name": "portrait painting",
+      "description": "A portrait of Lord Blackwood. Behind it, you notice strange markings on the wall.",
+      "type": "normal",
+      "weight": 15,
+      "value": 100,
+      "is_weapon": false,
+      "location": 1
+    },
+    {
+      "id": 7,
+      "name": "music box",
+      "description": "A delicate music box that plays a haunting melody. Inside is a small compartment.",
+      "type": "container",
+      "weight": 2,
+      "value": 50,
+      "is_weapon": false,
+      "location": -10,
+      "is_container": true,
+      "container_capacity": 5,
+      "contains_items": [8]
+    },
+    {
+      "id": 8,
+      "name": "golden locket",
+      "description": "A heart-shaped locket with a photo of Lady Blackwood inside.",
+      "type": "treasure",
+      "weight": 1,
+      "value": 150,
+      "is_weapon": false,
+      "location": -7,
+      "is_quest_item": true,
+      "quest_id": 1
+    },
+    {
+      "id": 9,
+      "name": "dusty book",
+      "description": "A book about the history of the Blackwood family.",
+      "type": "readable",
+      "weight": 2,
+      "value": 20,
+      "is_weapon": false,
+      "location": 3
+    },
+    {
+      "id": 10,
+      "name": "brass key",
+      "description": "A small brass key hidden under the piano bench.",
+      "type": "treasure",
+      "weight": 1,
+      "value": 5,
+      "is_weapon": false,
+      "is_key": true,
+      "location": -2
+    },
+    {
+      "id": 11,
+      "name": "silver spoon",
+      "description": "An ornate silver spoon from the dining set.",
+      "type": "treasure",
+      "weight": 1,
+      "value": 15,
+      "is_weapon": false,
+      "location": -4
+    },
+    {
+      "id": 12,
+      "name": "family fortune",
+      "description": "A chest filled with gold coins, jewels, and precious stones! You've found Lord Blackwood's hidden fortune!",
+      "type": "treasure",
+      "weight": 20,
+      "value": 5000,
+      "is_weapon": false,
+      "location": 6,
+      "is_quest_item": true,
+      "quest_id": 1
+    }
+  ],
+  
+  "monsters": [
+    {
+      "id": 1,
+      "name": "ghost of Lord Blackwood",
+      "description": "A translucent figure in Victorian dress. He seems more sad than scary.",
+      "hardiness": 20,
+      "agility": 15,
+      "friendliness": "neutral",
+      "courage": 100,
+      "location": 6,
+      "weapon_id": 0,
+      "dialogue_id": 1,
+      "can_trade": false,
+      "gives_quests": [1],
+      "reaction_level": 0,
+      "special_abilities": ["intangible", "undead"],
+      "ai_behavior": "passive"
+    }
+  ],
+  
+  "puzzles": [
+    {
+      "id": 1,
+      "type": "locked_door",
+      "room_id": 5,
+      "description": "The vault door has a keyhole and a combination lock.",
+      "exit_direction": "north",
+      "required_item": 4,
+      "success_message": "The key turns with a satisfying click! But the door still won't budge - there's also a combination lock.",
+      "failure_message": "The door is locked. You need the right key.",
+      "solved": false
+    },
+    {
+      "id": 2,
+      "type": "combination",
+      "room_id": 5,
+      "description": "A three-digit combination lock on the vault door.",
+      "exit_direction": "north",
+      "solution": "739",
+      "success_message": "The combination lock clicks open! The vault door swings wide, revealing the secret chamber beyond.",
+      "failure_message": "The combination doesn't work. Maybe there's a clue somewhere in the mansion?",
+      "max_attempts": 5,
+      "attempts_used": 0,
+      "solved": false
+    },
+    {
+      "id": 3,
+      "type": "hidden_object",
+      "room_id": 2,
+      "description": "The piano bench seems oddly positioned.",
+      "hidden_item_id": 7,
+      "success_message": "You find a music box hidden under the piano bench!",
+      "failure_message": "You don't find anything unusual.",
+      "solved": false
+    }
+  ],
+  
+  "dialogues": [
+    {
+      "npc_id": 1,
+      "greeting": "Ahh... a visitor. It has been so long since anyone came to my home. I am Lord Blackwood... or what remains of me.",
+      "topics": [
+        {
+          "keyword": "fortune",
+          "response": "My fortune? Yes, I hid it well. Too well, perhaps. I died before I could tell my family where it was. Now I'm bound here until someone worthy claims it.",
+          "changes_reaction": 10
+        },
+        {
+          "keyword": "quest",
+          "response": "If you can find my fortune, you may keep it. You'll need to solve the mysteries of the house. My journal holds clues... and my wife's locket was precious to me.",
+          "unlocks_quest": 1,
+          "changes_reaction": 5
+        },
+        {
+          "keyword": "clue",
+          "response": "The numbers are important. And search carefully - not everything is in plain sight. My wife loved music boxes...",
+          "changes_reaction": 5
+        },
+        {
+          "keyword": "wife",
+          "response": "My dear Lady Blackwood passed before me. She loved music and kept her treasures in the most delicate places.",
+          "changes_reaction": 5
+        }
+      ],
+      "farewell": "Good luck, brave soul. May you succeed where I failed in life."
+    }
+  ],
+  
+  "quests": [
+    {
+      "id": 1,
+      "title": "The Blackwood Fortune",
+      "description": "Find Lord Blackwood's hidden fortune. You'll need to search the mansion, solve puzzles, and piece together clues from his journal.",
+      "giver_npc": 1,
+      "objectives": [
+        {
+          "type": "collect_item",
+          "target_id": 3,
+          "quantity": 1,
+          "description": "Find Lord Blackwood's journal",
+          "completed": false
+        },
+        {
+          "type": "collect_item",
+          "target_id": 8,
+          "quantity": 1,
+          "description": "Find Lady Blackwood's locket",
+          "completed": false
+        },
+        {
+          "type": "solve_puzzle",
+          "target_id": 2,
+          "description": "Open the vault",
+          "completed": false
+        },
+        {
+          "type": "collect_item",
+          "target_id": 12,
+          "quantity": 1,
+          "description": "Claim the family fortune",
+          "completed": false
+        }
+      ],
+      "rewards_gold": 500,
+      "rewards_experience": 100,
+      "rewards_items": [],
+      "status": "not_started",
+      "required_for_completion": true
+    }
+  ]
+}
