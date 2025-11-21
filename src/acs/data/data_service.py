@@ -2,8 +2,7 @@
 Data service for managing game entities (rooms, items, monsters)
 """
 
-from typing import Dict, Any, Optional, List
-from dataclasses import asdict
+from typing import Any, Dict, List, Optional
 import logging
 
 from core.services import Service

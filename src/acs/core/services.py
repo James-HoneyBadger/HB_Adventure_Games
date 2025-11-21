@@ -5,7 +5,7 @@ Services provide cross-cutting functionality like I/O, configuration,
 and data access without tight coupling.
 """
 
-from typing import Dict, Any, Optional, Protocol
+from typing import Any, Dict, Optional
 from abc import ABC, abstractmethod
 import logging
 

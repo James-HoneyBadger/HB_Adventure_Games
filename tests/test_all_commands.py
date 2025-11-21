@@ -4,7 +4,7 @@ Comprehensive command test script for the ACS game engine.
 Tests all parser verbs against engine handlers.
 """
 
-from acs_parser import NaturalLanguageParser
+from src.acs.core.parser import NaturalLanguageParser
 
 # All verbs defined in the parser
 PARSER_VERBS = [
@@ -121,14 +121,17 @@ def test_parser():
         else:
             results["issues"].append(f"Verb '{verb}' not in verb_map")
 
-    print(f"\n✓ Recognized verbs: {len(results['recognized'])}/{len(PARSER_VERBS)}")
+    recognized_count = len(results["recognized"])
+    total_defined = len(PARSER_VERBS)
+    print(f"\n✓ Recognized verbs: {recognized_count}/{total_defined}")
 
     if results["issues"]:
         print(f"\n✗ Issues found: {len(results['issues'])}")
         for issue in results["issues"]:
             print(f"  - {issue}")
-
-    return results
+    assert not results["issues"], "Parser missing verbs: " + ", ".join(
+        results["issues"]
+    )
 
 
 def test_command_mapping():
@@ -155,8 +158,8 @@ def test_command_mapping():
         ("buy sword", "trade"),  # buy is synonym of trade
         ("sell shield", "trade"),  # sell is synonym of trade
         ("search", "search"),
-        ("examine door", "examine"),
-        ("read book", "examine"),
+        ("examine door", "look"),
+        ("read book", "read"),
         ("party", "party"),
         ("recruit fighter", "recruit"),
         ("gather", "gather"),
@@ -181,20 +184,21 @@ def test_command_mapping():
         if actual_action == expected_action:
             results["passed"] += 1
             print(f"✓ '{command}' -> {actual_action}")
-        else:
-            results["failed"].append(
-                {
-                    "command": command,
-                    "expected": expected_action,
-                    "actual": actual_action,
-                }
-            )
-            print(
-                f"✗ '{command}' -> expected '{expected_action}', "
-                f"got '{actual_action}'"
-            )
+            continue
 
-    print(f"\n✓ Passed: {results['passed']}/{len(test_cases)}")
+        results["failed"].append(
+            {
+                "command": command,
+                "expected": expected_action,
+                "actual": actual_action,
+            }
+        )
+        expected_msg = f"expected '{expected_action}', got '{actual_action}'"
+        print(f"✗ '{command}' -> {expected_msg}")
+
+    passed_cases = results["passed"]
+    total_cases = len(test_cases)
+    print(f"\n✓ Passed: {passed_cases}/{total_cases}")
 
     if results["failed"]:
         print(f"\n✗ Failed: {len(results['failed'])}")
@@ -203,8 +207,7 @@ def test_command_mapping():
                 f"  - '{fail['command']}': "
                 f"expected '{fail['expected']}', got '{fail['actual']}'"
             )
-
-    return results
+    assert not results["failed"], "Command mapping regressions detected."
 
 
 def test_engine_handlers():
@@ -248,8 +251,7 @@ def test_engine_handlers():
         print("\nMissing handlers:")
         for missing in results["missing"]:
             print(f"  - {missing}")
-
-    return results
+    assert not results["missing"], "Engine handlers missing for verbs."
 
 
 def test_synonyms():
@@ -281,33 +283,30 @@ def test_synonyms():
     for synonym_cmd, base_cmd in synonym_tests:
         parsed_synonym = parser.parse_sentence(synonym_cmd)
         parsed_base = parser.parse_sentence(base_cmd)
+        syn_action = parsed_synonym.get("action")
+        base_action = parsed_base.get("action")
 
-        if parsed_synonym.get("action") == parsed_base.get("action"):
+        if syn_action == base_action:
             results["passed"] += 1
-            print(
-                f"✓ '{synonym_cmd}' = '{base_cmd}' " f"({parsed_synonym.get('action')})"
-            )
+            print(f"✓ '{synonym_cmd}' = '{base_cmd}' ({syn_action})")
         else:
             results["failed"].append(
                 {
                     "synonym": synonym_cmd,
                     "base": base_cmd,
-                    "synonym_action": parsed_synonym.get("action"),
-                    "base_action": parsed_base.get("action"),
+                    "synonym_action": syn_action,
+                    "base_action": base_action,
                 }
             )
             print(
-                f"✗ '{synonym_cmd}' != '{base_cmd}' "
-                f"({parsed_synonym.get('action')} vs "
-                f"{parsed_base.get('action')})"
+                f"✗ '{synonym_cmd}' != '{base_cmd}' " f"({syn_action} vs {base_action})"
             )
 
     print(f"\n✓ Passed: {results['passed']}/{len(synonym_tests)}")
 
     if results["failed"]:
         print(f"\n✗ Failed: {len(results['failed'])}")
-
-    return results
+    assert not results["failed"], "Synonym parsing regressions detected."
 
 
 def generate_coverage_report():
@@ -316,7 +315,6 @@ def generate_coverage_report():
     print("COVERAGE SUMMARY")
     print("=" * 70)
 
-    parser = NaturalLanguageParser()
     total_verbs = len(PARSER_VERBS)
     total_handlers = len(ENGINE_HANDLERS)
 

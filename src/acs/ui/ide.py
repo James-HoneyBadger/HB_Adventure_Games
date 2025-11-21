@@ -1469,8 +1469,6 @@ F5 - Test Adventure
                 json.dump(self.adventure, f, indent=2)
 
             # Import and start game engine
-            import importlib.util
-
             engine_path = (
                 Path(__file__).parent.parent.parent.parent / "acs_engine_enhanced.py"
             )

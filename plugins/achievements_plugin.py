@@ -5,7 +5,7 @@ Tracks player progress and unlocks achievements based on game events.
 This is a refactored, plugin-based version of the original achievement system.
 """
 
-from typing import Dict, List, Any
+from typing import Any, Dict
 import logging
 
 from core.base_plugin import BasePlugin, PluginMetadata, PluginPriority

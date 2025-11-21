@@ -4,7 +4,7 @@ Configuration service for managing game and plugin settings
 
 import json
 from pathlib import Path
-from typing import Dict, Any, Optional
+from typing import Any, Dict
 import logging
 
 from core.services import Service

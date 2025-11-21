@@ -234,7 +234,8 @@ class InformStyleParser:
         if preposition:
             # Pattern: VERB [ADJ] NOUN PREP [ADJ] NOUN
             direct_obj = " ".join(remaining[:prep_index])
-            indirect_obj = " ".join(remaining[prep_index + 1 :])
+            slice_start = prep_index + 1
+            indirect_obj = " ".join(remaining[slice_start:])
 
             return ParsedCommand(
                 verb=verb,

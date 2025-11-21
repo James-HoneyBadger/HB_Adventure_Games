@@ -6,8 +6,8 @@ This makes it easier to save/load, debug, and reason about state changes.
 """
 
 from dataclasses import dataclass, field
-from typing import Dict, List, Any, Optional
 from enum import Enum
+from typing import Any, Dict, List
 
 
 class GamePhase(Enum):

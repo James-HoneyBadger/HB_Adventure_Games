@@ -26,7 +26,7 @@ case $choice in
         ;;
     2)
         echo "Running tests..."
-        python3 -m pytest tests/ -v
+        .venv/bin/python -m pytest tests/ -v
         ;;
     3)
         echo "Documentation is in docs/"

@@ -4,7 +4,7 @@ Adventure Construction Set - Command History & Prediction System
 Provides auto-complete, command history, and smart suggestions
 """
 
-from typing import List, Optional, Dict, Any
+from typing import Dict, List, Optional
 from collections import deque
 import difflib
 

@@ -12,19 +12,28 @@ from dataclasses import dataclass, field, asdict
 from enum import Enum
 from datetime import datetime
 
-# Add src to path for imports
-sys.path.insert(0, str(Path(__file__).parent / "src"))
-
 # Import original types for compatibility
-from acs.core.engine import (
-    ItemType,
-    MonsterStatus,
-    Item,
-    Monster,
-    Room,
-    Player,
-    AdventureGame,
-)
+try:
+    from acs.core.engine import (
+        ItemType,
+        MonsterStatus,
+        Item,
+        Monster,
+        Room,
+        Player,
+        AdventureGame,
+    )
+except ModuleNotFoundError:  # pragma: no cover - interactive launch path fix
+    sys.path.insert(0, str(Path(__file__).parent / "src"))
+    from acs.core.engine import (
+        ItemType,
+        MonsterStatus,
+        Item,
+        Monster,
+        Room,
+        Player,
+        AdventureGame,
+    )
 
 
 class PuzzleType(Enum):

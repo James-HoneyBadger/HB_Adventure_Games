@@ -5,10 +5,7 @@ Extended features for rich interactive fiction experiences
 """
 
 import json
-import random
-import sys
-import pickle
-from typing import Dict, List, Optional, Any, Tuple
+from typing import Dict, List, Optional
 from dataclasses import dataclass, field, asdict
 from enum import Enum
 from datetime import datetime
@@ -513,8 +510,9 @@ class EnhancedAdventureGame:
             with open(save_file, "r") as f:
                 save_data = json.load(f)
 
-            # Restore game state
-            # (Implementation would restore all objects)
+                # Restore game state
+                # (Implementation would restore all objects)
+                self._last_loaded_state = save_data
             print(f"\n✓ Game loaded from slot {slot}")
             return True
         except FileNotFoundError:

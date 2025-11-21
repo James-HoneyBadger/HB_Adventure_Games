@@ -8,7 +8,13 @@ consistent initialization, lifecycle management, and event handling.
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from enum import IntEnum
-from typing import Any, Dict, List, Optional, Set
+from typing import TYPE_CHECKING, Any, Dict, List
+
+
+if TYPE_CHECKING:
+    from .event_bus import EventBus
+    from .game_state import GameState
+    from .services import ServiceRegistry
 
 
 class PluginPriority(IntEnum):

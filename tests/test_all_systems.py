@@ -3,169 +3,145 @@
 Test script to verify all 10 enhancement systems are working
 """
 
+import importlib
 
-def test_imports():
-    """Test that all modules can be imported"""
+
+def _check_imports() -> bool:
+    """Return True if all key modules import successfully"""
     print("Testing module imports...")
 
-    try:
-        import acs_npc_context
+    modules = [
+        ("src.acs.systems.npc_context", "NPC Memory & Context"),
+        ("src.acs.systems.environment", "Environmental Storytelling"),
+        ("src.acs.tools.commands", "Smart Command Prediction"),
+        ("src.acs.systems.combat", "Enhanced Combat"),
+        ("src.acs.systems.achievements", "Achievements & Statistics"),
+        ("src.acs.systems.journal", "Journal & Notes"),
+        ("src.acs.systems.tutorial", "Tutorial & Hints"),
+        ("src.acs.tools.modding", "Modding & Scripting"),
+        ("src.acs.ui.accessibility", "Accessibility Features"),
+        ("src.acs.core.engine", "Core Engine"),
+    ]
 
-        print("  ✓ acs_npc_context")
-    except ImportError as e:
-        print(f"  ✗ acs_npc_context: {e}")
-        return False
+    success = True
+    for module_path, description in modules:
+        try:
+            importlib.import_module(module_path)
+            print(f"  ✓ {module_path} ({description})")
+        except ImportError as exc:
+            print(f"  ✗ {module_path}: {exc}")
+            success = False
 
-    try:
-        import acs_environment
-
-        print("  ✓ acs_environment")
-    except ImportError as e:
-        print(f"  ✗ acs_environment: {e}")
-        return False
-
-    try:
-        import acs_commands
-
-        print("  ✓ acs_commands")
-    except ImportError as e:
-        print(f"  ✗ acs_commands: {e}")
-        return False
-
-    try:
-        import acs_combat
-
-        print("  ✓ acs_combat")
-    except ImportError as e:
-        print(f"  ✗ acs_combat: {e}")
-        return False
-
-    try:
-        import acs_achievements
-
-        print("  ✓ acs_achievements")
-    except ImportError as e:
-        print(f"  ✗ acs_achievements: {e}")
-        return False
-
-    try:
-        import acs_journal
-
-        print("  ✓ acs_journal")
-    except ImportError as e:
-        print(f"  ✗ acs_journal: {e}")
-        return False
-
-    try:
-        import acs_tutorial
-
-        print("  ✓ acs_tutorial")
-    except ImportError as e:
-        print(f"  ✗ acs_tutorial: {e}")
-        return False
-
-    try:
-        import acs_modding
-
-        print("  ✓ acs_modding")
-    except ImportError as e:
-        print(f"  ✗ acs_modding: {e}")
-        return False
-
-    try:
-        import acs_accessibility
-
-        print("  ✓ acs_accessibility")
-    except ImportError as e:
-        print(f"  ✗ acs_accessibility: {e}")
-        return False
-
-    try:
-        import acs_engine
-
-        print("  ✓ acs_engine (with all systems integrated)")
-    except ImportError as e:
-        print(f"  ✗ acs_engine: {e}")
-        return False
-
-    return True
+    return success
 
 
-def test_basic_functionality():
+def test_imports():
+    """Pytest entrypoint"""
+    assert _check_imports()
+
+
+def _verify_system_behaviors() -> bool:
     """Test basic functionality of each system"""
     print("\nTesting basic functionality...")
 
     # Test NPC Context
-    from acs_npc_context import NPCContextManager
+    from src.acs.systems.npc_context import NPCContextManager
 
     npc_mgr = NPCContextManager()
     ctx = npc_mgr.get_or_create_context(1, "Wizard")
+    assert ctx.name == "Wizard"
     npc_mgr.improve_relationship(1, 10)
     print("  ✓ NPC Context: Create context and update relationship")
 
     # Test Environment
-    from acs_environment import EnvironmentalSystem
+    from src.acs.systems.environment import EnvironmentalSystem
 
     env = EnvironmentalSystem()
     time_desc = env.get_time_description()
     print(f"  ✓ Environment: Time system ({time_desc})")
 
     # Test Commands
-    from acs_commands import SmartCommandSystem
+    from src.acs.tools.commands import SmartCommandSystem
 
     cmd_sys = SmartCommandSystem()
     cmd_sys.add_to_history("north")
-    corrected = cmd_sys.predictor.correct_command("attak")
+    corrected = cmd_sys.predictor.fix_typo("attak")
     print(f"  ✓ Commands: Typo correction (attak → {corrected})")
 
     # Test Combat
-    from acs_combat import CombatEncounter, Combatant
+    from src.acs.systems.combat import CombatEncounter, Combatant
 
-    player = Combatant(name="Hero", max_health=100, attack=15, defense=10)
-    enemy = Combatant(name="Goblin", max_health=30, attack=8, defense=5)
-    encounter = CombatEncounter(player, [enemy])
-    print("  ✓ Combat: Create encounter with positioning")
+    player = Combatant(
+        name="Hero",
+        health=100,
+        max_health=100,
+        attack=15,
+        defense=10,
+        agility=12,
+    )
+    enemy = Combatant(
+        name="Goblin",
+        health=30,
+        max_health=30,
+        attack=8,
+        defense=5,
+        agility=8,
+    )
+    encounter = CombatEncounter()
+    encounter.add_player_combatant(player)
+    encounter.add_enemy_combatant(enemy)
+    round_messages = encounter.process_turn()
+    print(f"  ✓ Combat: Turn resolved ({len(round_messages)} events)")
 
     # Test Achievements
-    from acs_achievements import AchievementSystem
+    from src.acs.systems.achievements import AchievementSystem
 
     ach_sys = AchievementSystem()
-    ach_sys.stats.increment("steps_taken")
-    ach_sys.check_achievements()
-    print("  ✓ Achievements: Track stats and check unlocks")
+    ach_sys.statistics.increment("steps_taken")
+    unlocked = ach_sys.check_achievements()
+    unlocked_count = len(unlocked)
+    print(f"  ✓ Achievements: Track stats ({unlocked_count} unlocked)")
 
     # Test Journal
-    from acs_journal import AdventureJournal
+    from src.acs.systems.journal import AdventureJournal
 
     journal = AdventureJournal()
-    journal.log_event("Test event", room_id=1)
+    journal.log_event("Test event", "System check entry", room_id=1)
     journal.add_manual_note("Test note")
     print("  ✓ Journal: Log events and add notes")
 
     # Test Tutorial
-    from acs_tutorial import ContextualHintSystem
+    from src.acs.systems.tutorial import ContextualHintSystem
 
     tutorial = ContextualHintSystem()
     hint = tutorial.check_and_show_hint("moved", {"rooms_visited": 1})
-    print("  ✓ Tutorial: Check contextual hints")
+    print(f"  ✓ Tutorial: Check contextual hints ({hint})")
 
     # Test Modding
-    from acs_modding import ModdingSystem, ScriptHook, EventType
+    from src.acs.tools.modding import ModdingSystem, ScriptHook, EventType
 
     mod_sys = ModdingSystem()
-    hook = ScriptHook(event=EventType.ON_ENTER_ROOM, script_code='echo("Test hook")')
+    hook = ScriptHook(
+        event=EventType.ON_ENTER_ROOM,
+        script_code='echo("Test hook")',
+    )
     mod_sys.register_hook(hook)
     print("  ✓ Modding: Register event hooks")
 
     # Test Accessibility
-    from acs_accessibility import AccessibilitySystem, DifficultyLevel
+    from src.acs.ui.accessibility import AccessibilitySystem, DifficultyLevel
 
     acc_sys = AccessibilitySystem()
     acc_sys.set_difficulty(DifficultyLevel.EASY)
     health_bar = acc_sys.format_health_bar(75, 100)
-    print(f"  ✓ Accessibility: Difficulty & formatting")
+    print(f"  ✓ Accessibility: Difficulty & formatting {health_bar}")
 
     return True
+
+
+def test_basic_functionality():
+    """Pytest entrypoint"""
+    assert _verify_system_behaviors()
 
 
 def main():
@@ -175,11 +151,11 @@ def main():
     print("=" * 60)
     print()
 
-    if not test_imports():
+    if not _check_imports():
         print("\n✗ Import test failed!")
         return False
 
-    if not test_basic_functionality():
+    if not _verify_system_behaviors():
         print("\n✗ Functionality test failed!")
         return False
 

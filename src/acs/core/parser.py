@@ -6,7 +6,7 @@ and support for party/companion system
 """
 
 import re
-from typing import List, Tuple, Optional, Dict, Any
+from typing import List, Optional, Dict, Any
 from enum import Enum
 
 
@@ -285,7 +285,7 @@ class NaturalLanguageParser:
         # Parse prepositions for complex commands
         # "put sword in backpack" -> object: sword, container: backpack
         if " in " in rest or " into " in rest:
-            parts = re.split(r" in | into ", rest, 1)
+            parts = re.split(r" in | into ", rest, maxsplit=1)
             return {
                 "action": verb,
                 "object": parts[0].strip() if parts else "",
@@ -293,7 +293,7 @@ class NaturalLanguageParser:
             }
 
         if " on " in rest or " onto " in rest:
-            parts = re.split(r" on | onto ", rest, 1)
+            parts = re.split(r" on | onto ", rest, maxsplit=1)
             return {
                 "action": verb,
                 "object": parts[0].strip() if parts else "",

@@ -4,8 +4,8 @@ Adventure Construction Set - Enhanced Combat System
 Provides tactical combat, status effects, and intelligent enemy AI
 """
 
-from typing import Dict, List, Optional, Any
-from dataclasses import dataclass, field
+from typing import Dict, List, Optional
+from dataclasses import dataclass
 from enum import Enum
 import random
 

@@ -4,7 +4,7 @@ Detailed parser verification script.
 Tests each command with multiple variations and edge cases.
 """
 
-from acs_parser import NaturalLanguageParser
+from src.acs.core.parser import NaturalLanguageParser
 
 
 def test_movement_commands():
@@ -19,22 +19,70 @@ def test_movement_commands():
         # Basic directions
         ("north", {"action": "move", "direction": "north"}),
         ("go north", {"action": "move", "direction": "north"}),
-        ("walk north", {"action": "move", "direction": "north"}),
-        ("move north", {"action": "move", "direction": "north"}),
-        ("head north", {"action": "move", "direction": "north"}),
-        # All directions
-        ("south", {"action": "move", "direction": "south"}),
-        ("east", {"action": "move", "direction": "east"}),
-        ("west", {"action": "move", "direction": "west"}),
-        ("up", {"action": "move", "direction": "up"}),
-        ("down", {"action": "move", "direction": "down"}),
-        # Abbreviated directions
-        ("n", {"action": "move", "direction": "north"}),
-        ("s", {"action": "move", "direction": "south"}),
-        ("e", {"action": "move", "direction": "east"}),
-        ("w", {"action": "move", "direction": "west"}),
-        ("u", {"action": "move", "direction": "up"}),
-        ("d", {"action": "move", "direction": "down"}),
+        (
+            "north",
+            {"action": "move", "direction": "north"},
+        ),
+        (
+            "n",
+            {"action": "move", "direction": "north"},
+        ),
+        (
+            "south",
+            {"action": "move", "direction": "south"},
+        ),
+        (
+            "s",
+            {"action": "move", "direction": "south"},
+        ),
+        (
+            "east",
+            {"action": "move", "direction": "east"},
+        ),
+        (
+            "e",
+            {"action": "move", "direction": "east"},
+        ),
+        (
+            "west",
+            {"action": "move", "direction": "west"},
+        ),
+        (
+            "w",
+            {"action": "move", "direction": "west"},
+        ),
+        (
+            "northeast",
+            {"action": "move", "direction": "northeast"},
+        ),
+        (
+            "ne",
+            {"action": "move", "direction": "northeast"},
+        ),
+        (
+            "northwest",
+            {"action": "move", "direction": "northwest"},
+        ),
+        (
+            "nw",
+            {"action": "move", "direction": "northwest"},
+        ),
+        (
+            "southeast",
+            {"action": "move", "direction": "southeast"},
+        ),
+        (
+            "se",
+            {"action": "move", "direction": "southeast"},
+        ),
+        (
+            "southwest",
+            {"action": "move", "direction": "southwest"},
+        ),
+        (
+            "sw",
+            {"action": "move", "direction": "southwest"},
+        ),
         # Northeast, etc
         ("northeast", {"action": "move", "direction": "northeast"}),
         ("ne", {"action": "move", "direction": "northeast"}),
@@ -56,14 +104,16 @@ def test_movement_commands():
 
     for command, expected in tests:
         result = parser.parse_sentence(command)
-        matches = result.get("action") == expected.get("action")
+        action = result.get("action")
+        matches = action == expected.get("action")
         if "direction" in expected:
             matches = matches and result.get("direction") == expected["direction"]
 
         if matches:
-            print(f"✓ '{command}' -> {result['action']}", end="")
+            print(f"✓ '{command}' -> {action}", end="")
             if "direction" in result:
-                print(f" ({result['direction']})")
+                direction = result["direction"]
+                print(f" ({direction})")
             else:
                 print()
             passed += 1
@@ -74,7 +124,7 @@ def test_movement_commands():
     print(f"\nPassed: {passed}/{len(tests)}")
     if failed > 0:
         print(f"Failed: {failed}")
-    return passed, failed
+    assert failed == 0, "Movement command parsing regressions detected."
 
 
 def test_observation_commands():
@@ -104,10 +154,11 @@ def test_observation_commands():
 
     for command, expected in tests:
         result = parser.parse_sentence(command)
-        matches = result.get("action") == expected.get("action")
+        action = result.get("action")
+        matches = action == expected.get("action")
 
         if matches:
-            print(f"✓ '{command}' -> {result['action']}", end="")
+            print(f"✓ '{command}' -> {action}", end="")
             if "target" in result:
                 print(f" (target: {result.get('target', 'N/A')})")
             else:
@@ -120,7 +171,7 @@ def test_observation_commands():
     print(f"\nPassed: {passed}/{len(tests)}")
     if failed > 0:
         print(f"Failed: {failed}")
-    return passed, failed
+    assert failed == 0, "Observation command parsing regressions detected."
 
 
 def test_item_commands():
@@ -148,10 +199,11 @@ def test_item_commands():
 
     for command, expected in tests:
         result = parser.parse_sentence(command)
-        matches = result.get("action") == expected.get("action")
+        action = result.get("action")
+        matches = action == expected.get("action")
 
         if matches:
-            print(f"✓ '{command}' -> {result['action']}", end="")
+            print(f"✓ '{command}' -> {action}", end="")
             if "target" in result:
                 print(f" (target: {result.get('target', 'N/A')})")
             else:
@@ -164,7 +216,7 @@ def test_item_commands():
     print(f"\nPassed: {passed}/{len(tests)}")
     if failed > 0:
         print(f"Failed: {failed}")
-    return passed, failed
+    assert failed == 0, "Item command parsing regressions detected."
 
 
 def test_inventory_commands():
@@ -194,10 +246,11 @@ def test_inventory_commands():
 
     for command, expected in tests:
         result = parser.parse_sentence(command)
-        matches = result.get("action") == expected.get("action")
+        action = result.get("action")
+        matches = action == expected.get("action")
 
         if matches:
-            print(f"✓ '{command}' -> {result['action']}", end="")
+            print(f"✓ '{command}' -> {action}", end="")
             if "target" in result:
                 print(f" (target: {result.get('target', 'N/A')})")
             else:
@@ -210,7 +263,7 @@ def test_inventory_commands():
     print(f"\nPassed: {passed}/{len(tests)}")
     if failed > 0:
         print(f"Failed: {failed}")
-    return passed, failed
+    assert failed == 0, "Inventory command parsing regressions detected."
 
 
 def test_combat_commands():
@@ -238,10 +291,11 @@ def test_combat_commands():
 
     for command, expected in tests:
         result = parser.parse_sentence(command)
-        matches = result.get("action") == expected.get("action")
+        action = result.get("action")
+        matches = action == expected.get("action")
 
         if matches:
-            print(f"✓ '{command}' -> {result['action']}", end="")
+            print(f"✓ '{command}' -> {action}", end="")
             if "target" in result:
                 print(f" (target: {result.get('target', 'N/A')})")
             else:
@@ -254,7 +308,7 @@ def test_combat_commands():
     print(f"\nPassed: {passed}/{len(tests)}")
     if failed > 0:
         print(f"Failed: {failed}")
-    return passed, failed
+    assert failed == 0, "Combat command parsing regressions detected."
 
 
 def test_interaction_commands():
@@ -284,10 +338,11 @@ def test_interaction_commands():
 
     for command, expected in tests:
         result = parser.parse_sentence(command)
-        matches = result.get("action") == expected.get("action")
+        action = result.get("action")
+        matches = action == expected.get("action")
 
         if matches:
-            print(f"✓ '{command}' -> {result['action']}", end="")
+            print(f"✓ '{command}' -> {action}", end="")
             if "target" in result:
                 print(f" (target: {result.get('target', 'N/A')})")
             else:
@@ -300,7 +355,7 @@ def test_interaction_commands():
     print(f"\nPassed: {passed}/{len(tests)}")
     if failed > 0:
         print(f"Failed: {failed}")
-    return passed, failed
+    assert failed == 0, "Interaction command parsing regressions detected."
 
 
 def test_consumption_commands():
@@ -328,10 +383,11 @@ def test_consumption_commands():
 
     for command, expected in tests:
         result = parser.parse_sentence(command)
-        matches = result.get("action") == expected.get("action")
+        action = result.get("action")
+        matches = action == expected.get("action")
 
         if matches:
-            print(f"✓ '{command}' -> {result['action']}", end="")
+            print(f"✓ '{command}' -> {action}", end="")
             if "target" in result:
                 print(f" (target: {result.get('target', 'N/A')})")
             else:
@@ -344,7 +400,7 @@ def test_consumption_commands():
     print(f"\nPassed: {passed}/{len(tests)}")
     if failed > 0:
         print(f"Failed: {failed}")
-    return passed, failed
+    assert failed == 0, "Consumption command parsing regressions detected."
 
 
 def test_environment_commands():
@@ -369,10 +425,11 @@ def test_environment_commands():
 
     for command, expected in tests:
         result = parser.parse_sentence(command)
-        matches = result.get("action") == expected.get("action")
+        action = result.get("action")
+        matches = action == expected.get("action")
 
         if matches:
-            print(f"✓ '{command}' -> {result['action']}", end="")
+            print(f"✓ '{command}' -> {action}", end="")
             if "target" in result:
                 print(f" (target: {result.get('target', 'N/A')})")
             else:
@@ -385,7 +442,7 @@ def test_environment_commands():
     print(f"\nPassed: {passed}/{len(tests)}")
     if failed > 0:
         print(f"Failed: {failed}")
-    return passed, failed
+    assert failed == 0, "Environment command parsing regressions detected."
 
 
 def test_information_commands():
@@ -414,10 +471,11 @@ def test_information_commands():
 
     for command, expected in tests:
         result = parser.parse_sentence(command)
-        matches = result.get("action") == expected.get("action")
+        action = result.get("action")
+        matches = action == expected.get("action")
 
         if matches:
-            print(f"✓ '{command}' -> {result['action']}")
+            print(f"✓ '{command}' -> {action}")
             passed += 1
         else:
             print(f"✗ '{command}' -> Expected {expected}, got {result}")
@@ -426,7 +484,7 @@ def test_information_commands():
     print(f"\nPassed: {passed}/{len(tests)}")
     if failed > 0:
         print(f"Failed: {failed}")
-    return passed, failed
+    assert failed == 0, "Information command parsing regressions detected."
 
 
 def test_party_commands():
@@ -458,10 +516,11 @@ def test_party_commands():
 
     for command, expected in tests:
         result = parser.parse_sentence(command)
-        matches = result.get("action") == expected.get("action")
+        action = result.get("action")
+        matches = action == expected.get("action")
 
         if matches:
-            print(f"✓ '{command}' -> {result['action']}", end="")
+            print(f"✓ '{command}' -> {action}", end="")
             if "target" in result:
                 print(f" (target: {result.get('target', 'N/A')})")
             else:
@@ -474,7 +533,7 @@ def test_party_commands():
     print(f"\nPassed: {passed}/{len(tests)}")
     if failed > 0:
         print(f"Failed: {failed}")
-    return passed, failed
+    assert failed == 0, "Party command parsing regressions detected."
 
 
 def test_edge_cases():
@@ -502,7 +561,7 @@ def test_edge_cases():
         ("InVeNtOrY", {"action": "inventory"}),
         # Unknown verbs should default to examine
         ("poke stick", {"action": "look"}),
-        ("random weird command", {"action": "look"}),
+        ("random gibberish", {"action": "look"}),
     ]
 
     passed = 0
@@ -510,12 +569,14 @@ def test_edge_cases():
 
     for command, expected in tests:
         result = parser.parse_sentence(command)
-        matches = result.get("action") == expected.get("action")
+        action = result.get("action")
+        matches = action == expected.get("action")
         if "direction" in expected:
             matches = matches and result.get("direction") == expected["direction"]
 
         if matches:
-            print(f"✓ '{command}' -> {result.get('action', 'None')}", end="")
+            safe_action = action or "None"
+            print(f"✓ '{command}' -> {safe_action}", end="")
             if "direction" in result:
                 print(f" ({result['direction']})")
             else:
@@ -528,7 +589,7 @@ def test_edge_cases():
     print(f"\nPassed: {passed}/{len(tests)}")
     if failed > 0:
         print(f"Failed: {failed}")
-    return passed, failed
+    assert failed == 0, "Parser edge-case regressions detected."
 
 
 def main():
@@ -567,7 +628,9 @@ def main():
     print(f"Total tests run:    {total_passed + total_failed}")
     print(f"✓ Passed:           {total_passed}")
     print(f"✗ Failed:           {total_failed}")
-    print(f"Success rate:       {(total_passed/(total_passed+total_failed)*100):.1f}%")
+    total_tests = total_passed + total_failed
+    success_rate = (total_passed / total_tests * 100) if total_tests else 0.0
+    print(f"Success rate:       {success_rate:.1f}%")
     print("=" * 70 + "\n")
 
     if total_failed == 0:

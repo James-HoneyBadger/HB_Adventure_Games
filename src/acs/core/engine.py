@@ -15,25 +15,14 @@ from enum import Enum
 # Import enhanced parser if available
 try:
     from acs.core.parser import NaturalLanguageParser, Companion
-    from acs.systems.npc_context import (
-        NPCContextManager,
-        EmotionalState,
-        RelationshipLevel,
-    )
-    from acs.systems.environment import EnvironmentalSystem, InspectableObject
+    from acs.systems.npc_context import NPCContextManager
+    from acs.systems.environment import EnvironmentalSystem
     from acs.tools.commands import SmartCommandSystem
-    from acs.systems.combat import (
-        CombatEncounter,
-        Combatant,
-        CombatTactic,
-        StatusEffect,
-        CombatPosition,
-    )
     from acs.systems.achievements import AchievementSystem
     from acs.systems.journal import AdventureJournal
     from acs.systems.tutorial import ContextualHintSystem
-    from acs.tools.modding import ModdingSystem, EventType
-    from acs.ui.accessibility import AccessibilitySystem, DifficultyLevel
+    from acs.tools.modding import ModdingSystem
+    from acs.ui.accessibility import AccessibilitySystem
 
     ENHANCED_PARSER_AVAILABLE = True
 except ImportError:
@@ -42,7 +31,6 @@ except ImportError:
     NPCContextManager = None
     EnvironmentalSystem = None
     SmartCommandSystem = None
-    CombatEncounter = None
     AchievementSystem = None
     AdventureJournal = None
     ContextualHintSystem = None
@@ -1031,7 +1019,6 @@ class AdventureGame:
                         for feature in room.features:
                             if target.lower() in feature.lower():
                                 found = True
-                                state = "opened" if action == "open" else "closed"
                                 print(f"You {action} the {target}.")
                                 # Could store state changes here
                                 break

@@ -4,11 +4,9 @@ Adventure Construction Set - Modding & Scripting Support
 Allow adventure creators to extend functionality with Python scripts
 """
 
-from typing import Dict, List, Optional, Callable, Any
+from typing import Any, Dict, List, Optional
 from dataclasses import dataclass, field
 from enum import Enum
-import sys
-from io import StringIO
 
 
 class EventType(Enum):

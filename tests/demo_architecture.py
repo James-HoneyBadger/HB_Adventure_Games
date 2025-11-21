@@ -23,8 +23,8 @@ logging.basicConfig(
 )
 
 # Import core components
-from core import Engine, PluginMetadata, PluginPriority, BasePlugin, Event
-from utils import ConfigService, IOService, DataService
+from core import Engine, PluginMetadata, PluginPriority, BasePlugin, Event  # noqa: E402
+from utils import ConfigService, IOService, DataService  # noqa: E402
 
 
 # Example Plugin 1: Simple Counter

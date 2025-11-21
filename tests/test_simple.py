@@ -6,16 +6,16 @@ print("Testing All 10 Enhancement Systems")
 print("=" * 60)
 
 systems = [
-    ("acs_npc_context", "NPC Memory & Context"),
-    ("acs_environment", "Environmental Storytelling"),
-    ("acs_commands", "Smart Command Prediction"),
-    ("acs_combat", "Enhanced Combat System"),
-    ("acs_achievements", "Achievement & Statistics"),
-    ("acs_journal", "Journal & Note-Taking"),
-    ("acs_tutorial", "Tutorial & Contextual Help"),
-    ("acs_modding", "Modding & Scripting Support"),
-    ("acs_accessibility", "Accessibility Features"),
-    ("acs_engine", "Game Engine (with all systems)"),
+    ("src.acs.systems.npc_context", "NPC Memory & Context"),
+    ("src.acs.systems.environment", "Environmental Storytelling"),
+    ("src.acs.tools.commands", "Smart Command Prediction"),
+    ("src.acs.systems.combat", "Enhanced Combat System"),
+    ("src.acs.systems.achievements", "Achievement & Statistics"),
+    ("src.acs.systems.journal", "Journal & Note-Taking"),
+    ("src.acs.systems.tutorial", "Tutorial & Contextual Help"),
+    ("src.acs.tools.modding", "Modding & Scripting Support"),
+    ("src.acs.ui.accessibility", "Accessibility Features"),
+    ("src.acs.core.engine", "Game Engine (with all systems)"),
 ]
 
 passed = 0
